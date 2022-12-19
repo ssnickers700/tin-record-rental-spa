@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Record Rental</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div id="popup-edit" class="popup">Płyta została edytowana</div>
+<header>
+    <h1>Record Rental</h1>
+    <img src="../../images/logo.png" alt="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="../../index.html">Strona główna</a></li>
+        <li><a href="../client/list.html">Klienci</a></li>
+        <li><a href="list.html" class="active">Płyty</a></li>
+        <li><a href="../rental/list.html">Wynajmy</a></li>
+    </ul>
+</nav>
+<main>
+    <h2>Edycja płyty</h2>
+    <form class="form" action="#popup-edit">
+        <label for="recordName">Tytuł: <span class="symbol-required">*</span></label>
+        <input type="text" name="recordName" id="recordName" value="Bleach" class="error-input" required />
+        <span id="errorRecordName" class="errors-text">Pole jest wymagane</span>
+
+        <label for="artistName">Artysta: <span class="symbol-required">*</span></label>
+        <input type="text" name="artistName" id="artistName" value="Nirvana" class="error-input" required />
+        <span id="errorArtistName" class="errors-text">Pole jest wymagane</span>
+
+        <label for="price">Cena za dzień: <span class="symbol-required">*</span></label>
+        <input type="number" name="price" min="0.00" id="price" value="14.00" class="error-input" required />
+        <span id="errorPrice" class="errors-text" >Pole jest wymagane</span>
+
+        <label for="unit">Ilość dostępnych: <span class="symbol-required">*</span></label>
+        <input type="number" name="unit" id="unit" value="8" class="error-input" required />
+        <span id="errorUnit" class="errors-text" >Pole jest wymagane</span>
+
+        <div class="form-buttons">
+            <p id="errorsSummary" class="errors-text">Formularz zwiera błędy</p>
+            <input type="submit" value="Edytuj" class="form-button-submit-edit"/>
+            <a href="list.html" class="form-button-cancel">Anuluj</a>
+        </div>
+    </form>
+</main>
+<footer>Patryk Leszczyński s20747</footer>
+</body>
+</html>

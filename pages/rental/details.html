@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Record Rental</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <h1>Record Rental</h1>
+    <img src="../../images/logo.png" alt="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="../../index.html">Strona główna</a></li>
+        <li><a href="../client/list.html">Klienci</a></li>
+        <li><a href="../record/list.html">Płyty</a></li>
+        <li><a href="list.html" class="active">Wynajmy</a></li>
+    </ul>
+</nav>
+<main>
+    <h2>Szczegóły wynajmu</h2>
+    <form class="form">
+        <label for="firstName">Imię:</label>
+        <input type="text" name="firstName" id="firstName" value="Siemowit" disabled required />
+
+        <label for="lastName">Nazwisko:</label>
+        <input type="text" name="lastName" id="lastName" value="Blanek" disabled required />
+
+        <label for="recordName">Tytuł:</label>
+        <input type="text" name="recordName" id="recordName" value="Bleach" class="error-input" disabled required />
+
+        <label for="artistName">Artysta:</label>
+        <input type="text" name="artistName" id="artistName" value="Nirvana" class="error-input" disabled required />
+
+        <label for="price">Cena za dzień:</label>
+        <input type="number" name="price" min="0.00" id="price" value="14.00" class="error-input" disabled required />
+
+        <label for="startDate">Data od:</label>
+        <input type="date" name="startDate" id="startDate" value="2022-09-22" class="error-input" required disabled />
+
+        <label for="endDate">Data do:</label>
+        <input type="date" name="endDate" id="endDate" class="error-input" disabled/>
+    </form>
+    <a href="form-edit.html" class="button-edit">Edytuj</a>
+    <a href="list.html" class="button-back">Powrót</a>
+</main>
+<footer>Patryk Leszczyński s20747</footer>
+</body>
+</html>

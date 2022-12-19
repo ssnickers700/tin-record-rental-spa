@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Record Rental</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <h1>Record Rental</h1>
+    <img src="../../images/logo.png" alt="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="../../index.html">Strona główna</a></li>
+        <li><a href="../client/list.html">Klienci</a></li>
+        <li><a href="list.html" class="active">Płyty</a></li>
+        <li><a href="../rental/list.html">Wynajmy</a></li>
+    </ul>
+</nav>
+<main>
+    <h2>Szczegóły płyty</h2>
+    <form class="form">
+        <label for="recordName">Tytuł:</label>
+        <input type="text" name="recordName" id="recordName" value="Bleach" class="error-input" disabled required />
+
+        <label for="artistName">Artysta:</label>
+        <input type="text" name="artistName" id="artistName" value="Nirvana" class="error-input" disabled required />
+
+        <label for="price">Cena za dzień:</label>
+        <input type="number" name="price" min="0.00" id="price" value="14.00" class="error-input" disabled required />
+
+        <label for="unit">Ilość dostępnych:</label>
+        <input type="number" name="unit" id="unit" value="8" class="error-input" disabled required />
+    </form>
+    <a href="form-edit.html" class="button-edit">Edytuj</a>
+    <h2>Szczegóły wypożyczeń płyty</h2>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Data od</th>
+            <th>Data do</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Siemowit</td>
+            <td>Blanek</td>
+            <td>2022-09-22</td>
+            <td>2022-10-01</td>
+        </tr>
+        <tr>
+            <td>Pankracy</td>
+            <td>Pika</td>
+            <td>2022-10-22</td>
+            <td></td>
+        </tr>
+        </tbody>
+</table>
+    <a href="list.html" class="button-back">Powrót</a>
+</main>
+<footer>Patryk Leszczyński s20747</footer>
+</body>
+</html>

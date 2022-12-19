@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Record Rental</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div id="confirm-popup-delete">
+    <p>Czy na pewno chcesz usunąć klienta?</p>
+    <a href="#popup-delete" class="confirm-popup-yes-button">Tak</a>
+    <a href="list.html" class="confirm-popup-cancel-button">Anuluj</a>
+</div>
+<div id="popup-delete" class="popup">Klient został usunięty</div>
+<header>
+    <h1>Record Rental</h1>
+    <img src="../../images/logo.png" alt="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="../../index.html">Strona główna</a></li>
+        <li><a href="list.html" class="active">Klienci</a></li>
+        <li><a href="../record/list.html">Płyty</a></li>
+        <li><a href="../rental/list.html">Wynajmy</a></li>
+    </ul>
+</nav>
+<main>
+    <h2>Lista klientów</h2>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>E-mail</th>
+            <th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Simeowit</td>
+            <td>Blanek</td>
+            <td>siema.wit@gmail.com</td>
+            <td>
+                <ul class="list-actions">
+                    <li><a href="details.html" class="list-actions-button-details">Szczegóły</a></li>
+                    <li><a href="form-edit.html" class="list-actions-button-edit">Edytuj</a></li>
+                    <li><a href="#confirm-popup-delete" class="list-actions-button-delete">Usuń</a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Zygmunt</td>
+            <td>Gara</td>
+            <td>zigy.zig@gmail.com</td>
+            <td>
+                <ul class="list-actions">
+                    <li><a href="details.html" class="list-actions-button-details">Szczegóły</a></li>
+                    <li><a href="form-edit.html" class="list-actions-button-edit">Edytuj</a></li>
+                    <li><a href="#confirm-popup-delete" class="list-actions-button-delete">Usuń</a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Pankracy</td>
+            <td>Pika</td>
+            <td>pan.pika@gmail.com</td>
+            <td>
+                <ul class="list-actions">
+                    <li><a href="details.html" class="list-actions-button-details">Szczegóły</a></li>
+                    <li><a href="form-edit.html" class="list-actions-button-edit">Edytuj</a></li>
+                    <li><a href="#confirm-popup-delete" class="list-actions-button-delete">Usuń</a></li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="form.html" class="button-add">Dodaj nowego klienta</a>
+</main>
+<footer>Patryk Leszczyński s20747</footer>
+</body>
+</html>

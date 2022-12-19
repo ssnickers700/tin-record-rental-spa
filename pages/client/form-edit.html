@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Record Rental</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div id="popup-edit" class="popup">Klient został edytowany</div>
+<header>
+    <h1>Record Rental</h1>
+    <img src="../../images/logo.png" alt="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="../../index.html">Strona główna</a></li>
+        <li><a href="list.html" class="active">Klienci</a></li>
+        <li><a href="../record/list.html">Płyty</a></li>
+        <li><a href="../rental/list.html">Wynajmy</a></li>
+    </ul>
+</nav>
+<main>
+    <h2>Edycja klienta</h2>
+    <form class="form" action="#popup-edit">
+        <label for="firstName">Imię: <span class="symbol-required">*</span></label>
+        <input type="text" name="firstName" id="firstName" value="Siemowit" required />
+        <span id="errorFirstName" class="errors-text">Pole jest wymagane</span>
+
+        <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
+        <input type="text" name="lastName" id="lastName" value="Blanek" required />
+        <span id="errorLastName" class="errors-text">Pole jest wymagane</span>
+
+        <label for="email">Email: <span class="symbol-required">*</span></label>
+        <input type="email" name="email" id="email" value="siema.wit@gmail.com" required />
+        <span id="errorEmail" class="errors-text" >Pole jest wymagane</span>
+
+        <label>Czy wypłacalny: <span class="symbol-required">*</span></label>
+        <label for="solvencyTrue">Tak</label>
+        <input type="radio" id="solvencyTrue" name="solvency" value="true" checked/>
+        <label for="solvencyFalse">Nie</label>
+        <input type="radio" id="solvencyFalse" name="solvency" value="false" />
+
+        <div class="form-buttons">
+            <p id="errorsSummary" class="errors-text">Formularz zwiera błędy</p>
+            <input type="submit" value="Edytuj" class="form-button-submit-edit"/>
+            <a href="list.html" class="form-button-cancel">Anuluj</a>
+        </div>
+    </form>
+</main>
+<footer>Patryk Leszczyński s20747</footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Record Rental</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div id="popup-edit" class="popup">Wynajem został edytowany</div>
+<header>
+    <h1>Record Rental</h1>
+    <img src="../../images/logo.png" alt="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="../../index.html">Strona główna</a></li>
+        <li><a href="../client/list.html">Klienci</a></li>
+        <li><a href="../record/list.html">Płyty</a></li>
+        <li><a href="list.html" class="active">Wynajmy</a></li>
+    </ul>
+</nav>
+<main>
+    <h2>Edycja wynajmu</h2>
+    <form class="form" action="#popup-edit">
+        <label for="client">Klient: <span class="symbol-required">*</span></label>
+        <select name="client" id="client" class="error-input" required>
+            <option value>Wybierz klienta</option>
+            <option value="1" selected="selected">Siemowit Blanek</option>
+            <option value="2">Zygmunt Gara</option>
+            <option value="2">Pankracy Pika</option>
+        </select>
+        <span id="errorClient" class="errors-text">Pole jest wymagane</span>
+
+        <label for="record">Płyta: <span class="symbol-required">*</span></label>
+        <select name="record" id="record" class="error-input" required >
+            <option value>Wybierz płytę</option>
+            <option value="1" selected="selected">Bleach - Nirvana</option>
+            <option value="2">77 - Talking Heads</option>
+        </select>
+        <span id="errorRecord" class="errors-text">Pole jest wymagane</span>
+
+        <label for="startDate">Data od: <span class="symbol-required">*</span></label>
+        <input type="date" name="startDate" id="startDate" value="2022-09-22" class="error-input" required />
+        <span id="errorStartDate" class="errors-text" >Pole jest wymagane</span>
+
+        <label for="endDate">Data do:</label>
+        <input type="date" name="endDate" id="endDate" class="error-input" />
+        <span id="errorEndDate" class="errors-text" >Pole jest wymagane</span>
+
+        <div class="form-buttons">
+            <p id="errorsSummary" class="errors-text">Formularz zwiera błędy</p>
+            <input type="submit" value="Edytuj" class="form-button-submit-edit"/>
+            <a href="list.html" class="form-button-cancel">Anuluj</a>
+        </div>
+    </form>
+</main>
+<footer>Patryk Leszczyński s20747</footer>
+</body>
+</html>

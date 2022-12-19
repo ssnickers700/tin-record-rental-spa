@@ -1,0 +1,385 @@
+html {
+    background-color: #f6f4ff;
+    font-family: sans-serif;
+}
+
+body {
+    min-width: 600px;
+}
+
+header img {
+    width: 10%;
+    height: auto;
+}
+
+header, main, footer, nav {
+    margin: 1rem;
+}
+
+header, footer {
+    background-color: #c2aeff;
+    color: white;
+    padding: 1rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav {
+    background-color: #b49cff;
+}
+
+nav ul {
+    padding: 0;
+    overflow: hidden;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: 1rem 2rem;
+    color: #000000;
+}
+
+nav ul li a.active {
+    background-color: #a287ff;
+    color: #ecf0f1;
+}
+
+nav ul li a:hover {
+    background-color: #8963fd;
+    color: #ecf0f1;
+}
+
+main {
+    padding: 1.5rem;
+}
+
+main h2 {
+    border-bottom: 1px solid #7f8c8d;
+    margin-bottom: 2rem;
+}
+
+.table-list {
+    border-collapse: collapse;
+    color: #2c3e50;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.table-list,
+.table-list th,
+.table-list td {
+    border: 1px solid #bdc3c7;
+}
+
+.table-list th,
+.table-list td {
+    padding: 0.5rem;
+}
+
+.table-list th,
+.table-list tr:nth-child(even) {
+    background-color: #f1eeff;
+}
+
+.list-actions {
+    margin: 0;
+    text-align: center;
+    padding: 0;
+}
+
+.list-actions li {
+    display: inline-block;
+}
+
+.list-actions-button-details,
+.list-actions-button-edit,
+.list-actions-button-delete {
+    display: inline-block;
+    width: 75px;
+    padding: 0.25rem 0.5rem;
+}
+
+.list-actions-button-details,
+.list-actions-button-edit,
+.list-actions-button-delete,
+.button-add,
+.form-button-cancel,
+.form-button-submit-add,
+.form-button-submit-edit,
+.button-edit,
+.button-back,
+.confirm-popup-yes-button,
+.confirm-popup-cancel-button {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.list-actions-button-edit,
+.list-actions-button-details {
+    margin-right: 1rem;
+}
+
+.list-actions-button-details,
+.button-back {
+    background-color: rgba(41, 128, 185, 0.8);
+}
+
+.list-actions-button-details:hover,
+.button-back:hover {
+    background-color: rgba(52, 152, 219, 0.8);
+}
+
+.list-actions-button-edit,
+.form-button-submit-edit,
+.button-edit {
+    background-color: rgba(243, 156, 18, 0.8);
+}
+
+.list-actions-button-edit:hover,
+.form-button-submit-edit:hover,
+.button-edit:hover {
+    background-color: rgba(241, 196, 15, 0.8);
+}
+
+.list-actions-button-delete,
+.form-button-cancel,
+.confirm-popup-yes-button {
+    background-color: rgba(192, 57, 43, 0.8);
+}
+
+.list-actions-button-delete:hover,
+.form-button-cancel:hover,
+.confirm-popup-yes-button:hover {
+    background-color: rgba(231, 76, 60, 0.8);
+}
+
+.button-add,
+.form-button-submit-add{
+    background-color: rgba(39, 174, 96, 0.8);
+}
+
+.button-add:hover,
+.form-button-submit-add:hover {
+    background-color: rgba(46, 204, 113, 0.8);
+}
+
+.confirm-popup-cancel-button {
+    background-color: #7f8c8d;
+}
+
+.confirm-popup-cancel-button:hover {
+    background-color: #94a2a4;
+}
+
+.form-button-submit-edit,
+.form-button-cancel,
+.form-button-submit-add {
+    width: 100%;
+}
+
+.form-button-cancel {
+    box-sizing: border-box;
+    display: block;
+}
+
+.form-button-submit-add,
+.form-button-submit-edit {
+    margin-bottom: 0.5rem;
+}
+
+.button-edit {
+    display: inline-block;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.list-empty-text {
+    margin-bottom: 2rem;
+}
+
+.button-add,
+.form-button-cancel,
+.form-button-submit-add,
+.form-button-submit-edit,
+.button-edit,
+.button-back,
+.confirm-popup-yes-button,
+.confirm-popup-cancel-button {
+    padding: 0.5rem 1rem;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+    font-size: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin-top: 0;
+}
+
+.form {
+    margin-left: 2rem;
+    width: 300px;
+}
+
+.form select,
+.form input[type="text"],
+.form input[type="number"],
+.form input[type="email"],
+.form input[type="date"] {
+    border: 1px solid #7f8c8d;
+    color: #2c3e50;
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.form label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.form label[for="solvencyTrue"],
+.form label[for="solvencyFalse"] {
+    display: inline-block;
+}
+
+.form input[type="radio"] {
+    margin-right: 1rem;
+}
+
+/*.form input.error-input,
+.form select.error-input {
+    border: 3px solid #e74c3c;
+}*/
+
+/*.errors-text {
+    display: block;
+    line-height: 2.25rem;
+    margin-top: 0.5rem;
+}
+
+.symbol-required,
+.errors-text {
+    color: #c0392b;
+}*/
+
+.symbol-required {
+    color: #c0392b;
+}
+
+#errorFirstName,
+#errorLastName,
+#errorEmail,
+#errorsSummary,
+#errorRecordName,
+#errorArtistName,
+#errorPrice,
+#errorUnit,
+#errorClient,
+#errorRecord,
+#errorStartDate,
+#errorEndDate {
+    display: none;
+}
+
+#email:invalid + #errorEmail,
+#firstName:invalid + #errorFirstName,
+#lastName:invalid + #errorLastName,
+.form:invalid #errorsSummary,
+#recordName:invalid + #errorRecordName,
+#artistName:invalid + #errorArtistName,
+#price:invalid + #errorPrice,
+#unit:invalid + #errorUnit,
+#client:invalid + #errorClient,
+#record:invalid + #errorRecord,
+#startDate:invalid + #errorStartDate,
+#endDate:invalid + #errorEndDate {
+    display: block;
+    line-height: 2.25rem;
+    margin-top: 0.5rem;
+    color: #c0392b;
+}
+
+#firstName:invalid,
+#lastName:invalid,
+#email:invalid,
+#recordName:invalid,
+#artistName:invalid,
+#price:invalid,
+#unit:invalid,
+#client:invalid,
+#record:invalid,
+#startDate:invalid,
+#endDate:invalid {
+    border: 3px solid #e74c3c;
+}
+
+.form-buttons {
+    margin-top: 2rem;
+}
+
+.popup {
+    display: none;
+    background-color: rgba(39, 174, 96, 0.8);
+    color: white;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+#popup-delete:target,
+#popup-add:target,
+#popup-edit:target {
+    display: block;
+}
+
+#confirm-popup-delete {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #8963fd;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+#confirm-popup-delete:target {
+    display: block;
+}
+
+#confirm-popup-delete p{
+    margin: 0 0 2rem 0;
+    color: white;
+}
+
+#confirm-popup-delete a {
+    float: right;
+    margin-left: 1rem;
+}
+
+footer {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}

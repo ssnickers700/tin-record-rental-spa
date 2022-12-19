@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Record Rental</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div id="popup-add" class="popup">Klient został dodany</div>
+<header>
+    <h1>Record Rental</h1>
+    <img src="../../images/logo.png" alt="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="../../index.html">Strona główna</a></li>
+        <li><a href="list.html" class="active">Klienci</a></li>
+        <li><a href="../record/list.html">Płyty</a></li>
+        <li><a href="../rental/list.html">Wynajmy</a></li>
+    </ul>
+</nav>
+<main>
+    <h2>Nowy klient</h2>
+    <form class="form" action="#popup-add">
+        <label for="firstName">Imię: <span class="symbol-required">*</span></label>
+        <input type="text" name="firstName" id="firstName" class="error-input" required />
+        <span id="errorFirstName" class="errors-text">Pole jest wymagane</span>
+
+        <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
+        <input type="text" name="lastName" id="lastName" class="error-input" required />
+        <span id="errorLastName" class="errors-text">Pole jest wymagane</span>
+
+        <label for="email">Email: <span class="symbol-required">*</span></label>
+        <input type="email" name="email" id="email" class="error-input" required />
+        <span id="errorEmail" class="errors-text" >Pole jest wymagane</span>
+
+        <div class="form-buttons">
+            <p id="errorsSummary" class="errors-text">Formularz zwiera błędy</p>
+            <input type="submit" value="Dodaj" class="form-button-submit-add" />
+            <a href="list.html" class="form-button-cancel">Anuluj</a>
+        </div>
+    </form>
+</main>
+<footer>Patryk Leszczyński s20747</footer>
+</body>
+</html>
