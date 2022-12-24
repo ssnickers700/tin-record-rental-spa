@@ -4,20 +4,26 @@ import MainContent from "./components/other/MainContent";
 import Footer from "./components/fragments/Footer";
 import {
     BrowserRouter as Router,
-    Switch,
+    Routes,
     Route
 } from "react-router-dom";
+import ClientList from "./components/client/ClientList";
+import ClientDetails from "./components/client/ClientDetails";
 
 function App() {
     return (
-        <div>
-            <Header/>
-            <Navigation/>
-            <Switch>
-                <Route path="/" component={MainContent} />
-            </Switch>
-            <Footer />
-        </div>
+        <Router>
+            <div>
+                <Header/>
+                <Navigation/>
+                <Routes>
+                    <Route path="/" element={<MainContent />} />
+                    <Route path="/clients" element={<ClientList />} />
+                    <Route path="/clients/details/:clientId" element={<ClientDetails />} />
+                </Routes>
+                <Footer/>
+            </div>
+        </Router>
     );
 }
 
