@@ -3,24 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="76895aa8-52da-4835-afb8-61d423f43c33" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/public/images/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/client/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/client/details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/client/form-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/client/form-edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/client/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/client/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/client/list-empty.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/client/list-empty.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/client/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/client/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/record/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/record/details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/record/form-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/record/form-edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/record/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/record/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/record/list-empty.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/record/list-empty.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/record/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/record/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/rental/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rental/details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/rental/form-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rental/form-edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/rental/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rental/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/rental/list-empty.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rental/list-empty.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/rental/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rental/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/record-rental/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1671569891228</updated>
       <workItem from="1671569892747" duration="849000" />
-      <workItem from="1671570758037" duration="7485000" />
+      <workItem from="1671570758037" duration="8914000" />
     </task>
     <servers />
   </component>
