@@ -282,7 +282,7 @@ select {
     color: #c0392b;
 }
 
-#errorFirstName,
+/*#errorFirstName,
 #errorLastName,
 #errorEmail,
 #errorsSummary,
@@ -327,6 +327,18 @@ select {
 #startDate:invalid,
 #endDate:invalid {
     border: 3px solid #e74c3c;
+}*/
+
+form input.error-input,
+form select.error-input {
+    border: 3px solid #e74c3c;
+}
+
+.errors-text {
+    display: block;
+    line-height: 2.25rem;
+    margin-top: 0.5rem;
+    color: #c0392b;
 }
 
 .form-buttons {

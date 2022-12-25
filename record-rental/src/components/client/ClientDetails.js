@@ -7,7 +7,6 @@ function ClientDetails() {
     let {clientId} = useParams();
     clientId = parseInt(clientId);
     const client = getClientByIdApiCall(clientId);
-    console.log(client)
 
     return (
         <main>

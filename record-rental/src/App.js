@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import ClientList from "./components/client/ClientList";
 import ClientDetails from "./components/client/ClientDetails";
+import ClientForm from "./components/client/ClientForm";
 
 function App() {
     return (
@@ -20,6 +21,8 @@ function App() {
                     <Route path="/" element={<MainContent />} />
                     <Route path="/clients" element={<ClientList />} />
                     <Route path="/clients/details/:clientId" element={<ClientDetails />} />
+                    <Route path="/clients/add" element={<ClientForm />} />
+                    <Route path="/clients/edit/:clientId" element={<ClientForm />} />
                 </Routes>
                 <Footer/>
             </div>
