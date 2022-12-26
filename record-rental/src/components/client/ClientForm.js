@@ -21,9 +21,9 @@ class ClientForm extends React.Component{
 
                     <label>Czy wypłacalny: <span className="symbol-required">*</span></label>
                     <label htmlFor="solvencyTrue">Tak</label>
-                    <input type="radio" id="solvencyTrue" name="solvency" value="true" />
+                    <input type="radio" id="solvencyTrue" name="solvency" value="true" required/>
                     <label htmlFor="solvencyFalse">Nie</label>
-                    <input type="radio" id="solvencyFalse" name="solvency" value="false"/>
+                    <input type="radio" id="solvencyFalse" name="solvency" value="false" required/>
 
                     <div className="form-buttons">
                         <p id="errorsSummary" className="errors-text"></p>
