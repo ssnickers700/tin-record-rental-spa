@@ -10,6 +10,7 @@ import {
 import ClientList from "./components/client/ClientList";
 import ClientDetails from "./components/client/ClientDetails";
 import ClientForm from "./components/client/ClientForm";
+import RecordList from "./components/record/RecordList";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/clients/details/:clientId" element={<ClientDetails />} />
                     <Route path="/clients/add" element={<ClientForm />} />
                     <Route path="/clients/edit/:clientId" element={<ClientForm />} />
+                    <Route path="/records" element={<RecordList />} />
                 </Routes>
                 <Footer/>
             </div>
