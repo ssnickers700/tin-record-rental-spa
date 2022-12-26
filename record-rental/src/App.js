@@ -13,6 +13,7 @@ import ClientForm from "./components/client/ClientForm";
 import RecordList from "./components/record/RecordList";
 import RecordDetails from "./components/record/RecordDetails";
 import RecordForm from "./components/record/RecordForm";
+import RentalList from "./components/rental/RentalList";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Navigation/>
                 <Routes>
                     <Route path="/" element={<MainContent />} />
+
                     <Route path="/clients" element={<ClientList />} />
                     <Route path="/clients/details/:clientId" element={<ClientDetails />} />
                     <Route path="/clients/add" element={<ClientForm />} />
@@ -31,6 +33,8 @@ function App() {
                     <Route path="/records/details/:recordId" element={<RecordDetails />} />
                     <Route path="/records/add/" element={<RecordForm />} />
                     <Route path="/records/edit/:recordId" element={<RecordForm />} />
+
+                    <Route path="/rentals" element={<RentalList />} />
                 </Routes>
                 <Footer/>
             </div>
