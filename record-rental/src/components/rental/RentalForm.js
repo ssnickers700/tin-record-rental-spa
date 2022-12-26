@@ -2,7 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {getClientsApiCall} from "../../apiCalls/clientApiCalls";
 import {getRecordsApiCall} from "../../apiCalls/recordApiCalls";
-import {getFormattedDate} from "../../helpers/dateHelper";
 
 class RentalForm extends React.Component{
     render() {
