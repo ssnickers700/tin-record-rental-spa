@@ -43,15 +43,15 @@ function RentalDetails() {
                 <label htmlFor="startDate">Data od:</label>
                 <input type="date" name="startDate" id="startDate"
                        value={rental.startDate ? getFormattedDate(rental.startDate) : ""}
-                       className="error-input" required disabled/>
+                       required disabled/>
 
                 <label htmlFor="endDate">Data do:</label>
                 <input type="date" name="endDate" id="endDate"
                        value={rental.endDate ? getFormattedDate(rental.endDate) : ""}
-                       className="error-input" disabled/>
+                       disabled/>
 
                 <label htmlFor="price">Cena za dzień:</label>
-                <input type="number" name="price" min="0.00" id="price" value={rental.record.price} className="error-input" disabled
+                <input type="number" name="price" min="0.00" id="price" value={rental.record.price} disabled
                        required/>
 
                 <label htmlFor="email">Email klienta:</label>

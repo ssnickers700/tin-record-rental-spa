@@ -15,6 +15,7 @@ import RecordDetails from "./components/record/RecordDetails";
 import RecordForm from "./components/record/RecordForm";
 import RentalList from "./components/rental/RentalList";
 import RentalDetails from "./components/rental/RentalDetails";
+import RentalForm from "./components/rental/RentalForm";
 
 function App() {
     return (
@@ -37,6 +38,8 @@ function App() {
 
                     <Route path="/rentals" element={<RentalList />} />
                     <Route path="/rentals/details/:rentalId" element={<RentalDetails />} />
+                    <Route path="/rentals/add" element={<RentalForm />} />
+                    <Route path="/rentals/edit/:rentalId" element={<RentalForm />} />
                 </Routes>
                 <Footer/>
             </div>
