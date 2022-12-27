@@ -7,7 +7,6 @@ function ClientList() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [clients, setClients] = useState([])
-    const clientList = getClientsApiCall();
     let content;
 
     const fetchClientList = () => {
@@ -32,7 +31,9 @@ function ClientList() {
     if (error) {
         content = <p>Błąd: {error.message}</p>
     } else if (!isLoaded) {
-        content = <p>Ładowanie danych pracowników...</p>;
+        content = <p>Ładowanie danych klientów...</p>;
+    } else if (!clients.length) {
+        content = <p>Brak danych klientów</p>;
     } else {
         content = <ClientListTable clientList={clients} />
     }
