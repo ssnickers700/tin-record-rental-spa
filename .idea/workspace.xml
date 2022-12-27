@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76895aa8-52da-4835-afb8-61d423f43c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/record-rental/src/components/client/ClientDetailsData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/apiCalls/clientApiCalls.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/apiCalls/clientApiCalls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/components/client/ClientDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/client/ClientDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/components/client/ClientList.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/client/ClientList.js" afterDir="false" />
-    </list>
+    <list default="true" id="76895aa8-52da-4835-afb8-61d423f43c33" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +43,7 @@
       <option name="presentableId" value="Default" />
       <updated>1671569891228</updated>
       <workItem from="1671569892747" duration="849000" />
-      <workItem from="1671570758037" duration="54324000" />
+      <workItem from="1671570758037" duration="54689000" />
     </task>
     <servers />
   </component>
