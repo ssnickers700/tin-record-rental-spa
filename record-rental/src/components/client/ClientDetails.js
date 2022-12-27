@@ -35,7 +35,7 @@ function ClientDetails() {
     }
 
     useEffect(() => {
-        fetchClientDetails()
+        fetchClientDetails();
     }, []);
 
     if (error) {

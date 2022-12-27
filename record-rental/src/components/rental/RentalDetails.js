@@ -1,71 +1,80 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import {getFormattedDate} from "../../helpers/dateHelper";
 import {getRecordsApiCall} from "../../apiCalls/recordApiCalls";
 import {getClientsApiCall} from "../../apiCalls/clientApiCalls";
 import {getRentalByIdApiCall} from "../../apiCalls/rentalApiCalls";
+import RentalDetailsData from "./RentalDetailsData";
 
 function RentalDetails() {
     let {rentalId} = useParams();
     rentalId = parseInt(rentalId);
-    const rental = getRentalByIdApiCall(rentalId);
-    const allClients = getClientsApiCall();
+    const [rentalIdHook, setRentalIdHook] = useState(rentalId);
+    const [rental, setRental] = useState(null);
+    const [allClients, setAllClients] = useState([])
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(null);
+    const [message, setMessage] = useState(null);
+    // const rental = getRentalByIdApiCall(rentalId);
+    //const allClients = getClientsApiCall();
     const allRecords = getRecordsApiCall();
+    let content;
+
+    const fetchRentalDetails = () => {
+        getRentalByIdApiCall(rentalIdHook)
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    if (data.message) {
+                        setRental(null);
+                        setMessage(data.message);
+                    } else {
+                        setRental(data);
+                        setMessage(null);
+                    }
+                    setIsLoaded(true);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            );
+    }
+
+    const fetchClientList = () => {
+        getClientsApiCall()
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    setIsLoaded(true);
+                    setAllClients(data);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            );
+    }
+
+    useEffect(() => {
+        fetchRentalDetails();
+        fetchClientList()
+    }, []);
+
+
+    if (error) {
+        content = <p>Błąd: {error.message}</p>
+    } else if (!isLoaded) {
+        content = <p>Ładowanie danych wynajmu...</p>;
+    } else if (message) {
+        content = <p>{message}</p>;
+    } else {
+        content = <RentalDetailsData rentalData={rental} allClients={allClients} allRecords={allRecords} />
+    }
 
     return (
         <main>
             <h2>Szczegóły wynajmu</h2>
-            <form className="form">
-                <label htmlFor="client">Klient: <span className="symbol-required">*</span></label>
-                <select name="client" id="client" required disabled>
-                    <option value>Wybierz klienta</option>
-                    {allClients.map(client =>
-                        (<option key={client._id} value={client._id}
-                                 label={client.firstName + " " + client.lastName}
-                                 selected={client._id === rental.client._id ? "selected" : ""}>
-                        </option>)
-                    )}
-                </select>
-                <span id="errorClient" className="errors-text"></span>
-
-                <label htmlFor="record">Płyta: <span className="symbol-required">*</span></label>
-                <select name="record" id="record" required disabled>
-                    <option value>Wybierz płytę</option>
-                    {allRecords.map(record =>
-                        (<option key={record._id} value={record._id}
-                                 label={record.recordName + " - " + record.artistName}
-                                 selected={record._id === rental.record._id ? "selected" : ""}>
-                        </option>)
-                    )}
-                </select>
-                <span id="errorRecord" className="errors-text"></span>
-
-                <label htmlFor="startDate">Data od:</label>
-                <input type="date" name="startDate" id="startDate"
-                       value={rental.startDate ? getFormattedDate(rental.startDate) : ""}
-                       required disabled/>
-
-                <label htmlFor="endDate">Data do:</label>
-                <input type="date" name="endDate" id="endDate"
-                       value={rental.endDate ? getFormattedDate(rental.endDate) : ""}
-                       disabled/>
-
-                <label htmlFor="price">Cena za dzień:</label>
-                <input type="number" name="price" min="0.00" id="price" value={rental.record.price} disabled
-                       required/>
-
-                <label htmlFor="email">Email klienta:</label>
-                <input type="email" name="email" id="email" value={rental.client.email} disabled required/>
-
-                <label>Czy klient wypłacalny:</label>
-                <label htmlFor="solvencyTrue">Tak</label>
-                <input type="radio" id="solvencyTrue" name="solvency" value="true"
-                       disabled checked={rental.client.solvency === true ? "checked" : ""}/>
-                <label htmlFor="solvencyFalse">Nie</label>
-                <input type="radio" id="solvencyFalse" name="solvency" value="false"
-                       disabled checked={rental.client.solvency === true ? "" : "checked"}/>
-            </form>
-            <Link to={`/rentals/edit/${rental._id}`} className="button-edit">Edytuj</Link>
+            {content}
             <Link to="/rentals" className="button-back">Powrót</Link>
         </main>
     );
