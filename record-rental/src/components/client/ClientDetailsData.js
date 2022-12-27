@@ -1,6 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {getFormattedDate} from "../../helpers/dateHelper";
+import ClientListTableRow from "./ClientListTableRow";
+import ClientDetailsDataTableRow from "./ClientDetailsDataTableRow";
 
 function ClientDetailsData(props) {
     const client = props.clientData
@@ -38,12 +40,7 @@ function ClientDetailsData(props) {
                 </thead>
                 <tbody>
                 {client.rentals.map(rental => (
-                    <tr key={rental._id}>
-                        <td>{rental.record.recordName}</td>
-                        <td>{rental.record.artistName}</td>
-                        <td>{rental.startDate ? getFormattedDate(rental.startDate) : ""}</td>
-                        <td>{rental.endDate ? getFormattedDate(rental.endDate) : ""}</td>
-                    </tr>
+                    <ClientDetailsDataTableRow rentalData={rental} key={rental._id} />
                 ))}
                 </tbody>
             </table>
