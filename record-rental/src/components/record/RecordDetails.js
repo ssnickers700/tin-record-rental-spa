@@ -1,54 +1,60 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import {getFormattedDate} from "../../helpers/dateHelper";
 import {getRecordByIdApiCall} from "../../apiCalls/recordApiCalls";
+import RecordDetailsData from "./RecordDetailsData";
 
 function RecordDetails() {
     let {recordId} = useParams();
     recordId = parseInt(recordId);
-    const record = getRecordByIdApiCall(recordId);
+    //const record = getRecordByIdApiCall(recordId);
+    const [recordIdHook, setRecordIdHook] = useState(recordId);
+    const [record, setRecord] = useState(null);
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(null);
+    const [message, setMessage] = useState(null);
+    let content;
+
+    const fetchRecordDetails = () => {
+        getRecordByIdApiCall(recordIdHook)
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    if (data.message) {
+                        setRecord(null);
+                        setMessage(data.message);
+                    } else {
+                        setRecord(data);
+                        setMessage(null);
+                    }
+                    setIsLoaded(true);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            );
+    }
+
+    useEffect(() => {
+        fetchRecordDetails();
+    }, []);
+
+    if (error) {
+        content = <p>Błąd: {error.message}</p>
+    } else if (!isLoaded) {
+        content = <p>Ładowanie danych płyt...</p>;
+    } else if (message) {
+        content = <p>{message}</p>;
+    } else {
+        content = <RecordDetailsData recordData={record} />
+    }
+
 
     return (
         <main>
             <h2>Szczegóły płyty</h2>
-            <form className="form">
-                <label htmlFor="recordName">Tytuł:</label>
-                <input type="text" name="recordName" id="recordName" value={record.recordName} className="error-input" disabled
-                       required/>
-
-                <label htmlFor="artistName">Artysta:</label>
-                <input type="text" name="artistName" id="artistName" value={record.artistName} className="error-input" disabled
-                       required/>
-
-                <label htmlFor="price">Cena za dzień:</label>
-                <input type="number" name="price" min="0.00" id="price" value={record.price} className="error-input" disabled
-                       required/>
-
-                <label htmlFor="unit">Ilość dostępnych:</label>
-                <input type="number" name="unit" id="unit" value={record.unit} className="error-input" disabled required/>
-            </form>
-            <Link to={`/records/edit/${record._id}`} className="button-edit">Edytuj</Link>
-            <h2>Szczegóły wypożyczeń płyty</h2>
-            <table className="table-list">
-                <thead>
-                <tr>
-                    <th>Imie</th>
-                    <th>Nazwisko</th>
-                    <th>Data od</th>
-                    <th>Data do</th>
-                </tr>
-                </thead>
-                <tbody>
-                {record.rentals.map(rental => (
-                    <tr key={rental._id}>
-                        <td>{rental.client.firstName}</td>
-                        <td>{rental.client.lastName}</td>
-                        <td>{rental.startDate ? getFormattedDate(rental.startDate) : ""}</td>
-                        <td>{rental.endDate ? getFormattedDate(rental.endDate) : ""}</td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+            {content}
             <Link to="/records" className="button-back">Powrót</Link>
         </main>
     );
