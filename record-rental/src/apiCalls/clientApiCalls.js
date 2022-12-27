@@ -8,6 +8,6 @@ export function getClientsApiCall() {
 
 export function getClientByIdApiCall(clientId) {
     // const client = clientDetailsList.find(client => client._id === clientId)
-    const promise = fetch(`${clientsBaseUrl}/${clientId}`)
+    const promise = fetch(`${clientsBaseUrl}/${clientId}`);
     return promise;
 }

@@ -1,40 +1,47 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {getRecordsApiCall} from "../../apiCalls/recordApiCalls";
+import RecordListTable from "./RecordListTable";
 
 function RecordList() {
-    const recordList = getRecordsApiCall();
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [records, setRecords] = useState([])
+    let content;
+
+    const fetchRecordList = () => {
+        getRecordsApiCall()
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    setIsLoaded(true);
+                    setRecords(data);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            );
+    }
+
+    if (error) {
+        content = <p>Błąd: {error.message}</p>
+    } else if (!isLoaded) {
+        content = <p>Ładowanie danych płyt...</p>;
+    } else if (!records.length) {
+        content = <p>Brak danych płyt</p>;
+    } else {
+        content = <RecordListTable recordList={records} />
+    }
+
+    useEffect(() => {
+        fetchRecordList()
+    }, []);
+
     return (
         <main>
             <h2>Lista płyt</h2>
-            <table className="table-list">
-                <thead>
-                <tr>
-                    <th>Tytuł</th>
-                    <th>Artysta</th>
-                    <th>Cena za dzień</th>
-                    <th>Ilość dostępnych</th>
-                    <th>Akcje</th>
-                </tr>
-                </thead>
-                <tbody>
-                {recordList.map(record => (
-                    <tr key={record._id}>
-                        <td>{record.recordName}</td>
-                        <td>{record.artistName}</td>
-                        <td>{record.price}</td>
-                        <td>{record.unit}</td>
-                        <td>
-                            <ul className="list-actions">
-                                <li><Link to={`/records/details/${record._id}`} className="list-actions-button-details">Szczegóły</Link></li>
-                                <li><Link to={`/records/edit/${record._id}`} className="list-actions-button-edit">Edytuj</Link></li>
-                                <li><Link to={`/records/delete/${record._id}`} className="list-actions-button-delete">Usuń</Link></li>
-                            </ul>
-                        </td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+            {content}
             <Link to="/records/add" className="button-add">Dodaj nową płytę</Link>
         </main>
     )
