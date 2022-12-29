@@ -232,7 +232,7 @@ select {
 
 .form {
     margin-left: 2rem;
-    width: 300px;
+    width: 340px;
 }
 
 .form select,
@@ -346,10 +346,10 @@ form select.error-input {
 }
 
 .popup {
-    display: none;
+    display: block;
     background-color: rgba(39, 174, 96, 0.8);
     color: white;
-    margin: 1rem;
+    margin: 1rem 1rem -1rem 1rem;
     padding: 0.5rem 1rem;
 }
 

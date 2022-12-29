@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {getClientsApiCall} from "../../apiCalls/clientApiCalls";
 import ClientListTable from "./ClientListTable";
 
-function ClientList() {
+function ClientList(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [clients, setClients] = useState([])
+    const [clients, setClients] = useState([]);
+    const location = useLocation();
+    let redirectNotice = location.state ? location.state : "";
+    const popupClassName = location.state ? "popup" : "";
+    const [notice, setNotice] = useState(redirectNotice);
     let content;
 
     const fetchClientList = () => {
@@ -39,11 +43,14 @@ function ClientList() {
     }
 
     return (
-        <main>
-            <h2>Lista klientów</h2>
-            {content}
-            <Link to="/clients/add" className="button-add">Dodaj nowego klienta</Link>
-        </main>
+        <>
+            <div className={popupClassName}>{notice}</div>
+            <main>
+                <h2>Lista klientów</h2>
+                {content}
+                <Link to="/clients/add" className="button-add">Dodaj nowego klienta</Link>
+            </main>
+        </>
     );
 }
 

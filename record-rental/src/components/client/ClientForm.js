@@ -1,34 +1,274 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, {useState , useEffect} from "react";
+import {Link, Navigate, useNavigate, useParams} from "react-router-dom";
+import formMode from "../../helpers/formHelper";
+import {addClientApiCall, getClientByIdApiCall, updateClientApiCall} from "../../apiCalls/clientApiCalls";
+import {
+    checkEmail,
+    checkRequired,
+    checkTextLengthRange,
+    errorRequiredText,
+    getErrorLengthText
+} from "../../helpers/validationCommon";
+import FormInput from "../../form/FormInput";
+import FormButtons from "../../form/FormButtons";
 
 function ClientForm() {
+    let {clientId} = useParams();
+    clientId = parseInt(clientId);
+    let currentFormMode = clientId ? formMode.EDIT : formMode.NEW;
+    const [clientIdHook, setClientIdHook] = useState(clientId);
+    const [client, setClient] = useState({firstName: "", lastName: "", email: "", solvency: ""});
+    const [errors, setErrors] = useState({firstName: "", lastName: "", email: "", solvency: ""});
+    const [formModeHook, setFormModeHook] = useState(currentFormMode);
+    const [redirect, setRedirect] = useState(false);
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(null);
+    const [message, setMessage] = useState(null);
+    const [notice, setNotice] = useState(null);
+
+    const fetchClientDetails = () => {
+        getClientByIdApiCall(clientIdHook)
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    if (data.message) {
+                        setClient(null);
+                        setMessage(data.message);
+                    } else {
+                        setClient(data);
+                        setMessage(null);
+                    }
+                    setIsLoaded(true);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            );
+    }
+
+    useEffect(() => {
+        if (formModeHook === formMode.EDIT) {
+            fetchClientDetails();
+        }
+    }, []);
+
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        const clientChange = {...client};
+        clientChange[name] = value;
+
+        const errorMessage = validateField(name, value);
+        const errorsChange = {...errors};
+        errorsChange[name] = errorMessage;
+
+        setClient(clientChange);
+        setErrors(errorsChange);
+        setError(null);
+    }
+
+    const validateField = (fieldName, fieldValue) => {
+        let errorMessage = "";
+        if (fieldName === "firstName") {
+            if (!checkRequired(fieldValue)) {
+               errorMessage = errorRequiredText;
+            } else if (!checkTextLengthRange(fieldValue, 2, 60)) {
+                errorMessage = getErrorLengthText(2, 60);
+            }
+        }
+        if (fieldName === "lastName") {
+            if (!checkRequired(fieldValue)) {
+                errorMessage = errorRequiredText;
+            } else if (!checkTextLengthRange(fieldValue, 2, 60)) {
+                errorMessage = getErrorLengthText(2, 60);
+            }
+        }
+        if (fieldName === "email") {
+            if (!checkRequired(fieldValue)) {
+                errorMessage = errorRequiredText;
+            } else if (!checkTextLengthRange(fieldValue, 5, 60)) {
+                errorMessage = getErrorLengthText(5, 60);
+            } else if (!checkEmail(fieldValue)) {
+                errorMessage = "Pole powinno zawierać prawidłowy adres email";
+            }
+        }
+        if (fieldName === "solvency") {
+            if (!checkRequired(fieldValue)) {
+                errorMessage = errorRequiredText;
+            }
+        }
+        return errorMessage;
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const isValid = validateForm()
+        if (isValid) {
+            const
+                clientSubmit = client,
+                currentFormMode = formModeHook
+            let
+                promise,
+                response;
+            if (currentFormMode === formMode.NEW) {
+                promise = addClientApiCall(clientSubmit)
+
+            } else if (currentFormMode === formMode.EDIT) {
+                console.log(clientSubmit)
+                const clientSubmitId = clientIdHook
+                promise = updateClientApiCall(clientSubmitId, clientSubmit)
+            }
+            if (promise) {
+                promise
+                    .then(
+                        (data) => {
+                            response = data
+                            if (response.status === 201 || response.status === 500) {
+                                return data.json()
+                            }
+                        })
+                    .then(
+                        (data) => {
+                            if (!response.ok && response.status === 500) {
+                                console.log(data)
+                                for (const i in data) {
+                                    const errorItem = data[i]
+                                    const errorMessage = errorItem.message
+                                    const fieldName = errorItem.path
+                                    const errorsResponse = {...errors}
+                                    errorsResponse[fieldName] = errorMessage
+                                    setErrors(errorsResponse);
+                                    setError(null);
+                                }
+                            } else {
+                                setRedirect(true);
+                            }
+                        },
+                        (error) => {
+                            setError(error);
+                            console.log(JSON.stringify(error))
+                        }
+                    )
+            }
+        }
+    }
+
+    const validateForm = () => {
+        const formClient = client;
+        const formErrors = {...errors};
+        for (const fieldName in formClient) {
+            const fieldValue = formClient[fieldName];
+            const errorMessage = validateField(fieldName, fieldValue);
+            formErrors[fieldName] = errorMessage;
+        }
+        setErrors(formErrors);
+        return !hasErrors();
+    }
+
+    const hasErrors = () => {
+        const formErrors = errors;
+        for (const fieldName in errors) {
+            if (formErrors[fieldName].length > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    const navigate = useNavigate();
+    const currentRedirect = redirect;
+    if (redirect) {
+        const currentFormMode = formModeHook;
+        const notice = currentFormMode === formMode.NEW ?
+            "Pracownik został dodany" : 'Pracownik został edytowany'
+        return (
+            navigate("/clients", {
+                state: notice,
+            })
+            /*<Navigate to={{
+                pathname: "/clients",
+                hash: "popup-add",
+                state: {
+                    notice: notice
+                },
+                search: notice
+            }} />*/
+        )
+    }
+
+    const errorsSummary = hasErrors() ? "Formularz zawiera błędy" : "";
+    const fetchError = error ? `Błąd: ${message}` : "";
+    const pageTitle = formModeHook === formMode.NEW ? "Nowy klient" : "Edycja klienta";
+    const globalErrorMessage = errorsSummary || fetchError || message
+
+
     return (
         <main>
-            <h2>Nowy klient</h2>
-            <form className="form">
-                <label htmlFor="firstName">Imię: <span className="symbol-required">*</span></label>
+            <h2>{pageTitle}</h2>
+            <form className="form" onSubmit={handleSubmit} noValidate>
+                {/*<label htmlFor="firstName">Imię: <span className="symbol-required">*</span></label>
                 <input type="text" name="firstName" id="firstName" className="error-input" required/>
-                <span id="errorFirstName" className="errors-text"></span>
+                <span id="errorFirstName" className="errors-text"></span>*/}
+                <FormInput
+                    type="text"
+                    label="Imię:"
+                    required
+                    error={errors.firstName}
+                    name="firstName"
+                    onChange={handleChange}
+                    value={client.firstName}
+                />
 
-                <label htmlFor="lastName">Nazwisko: <span className="symbol-required">*</span></label>
+                <FormInput
+                    type="text"
+                    label="Nazwisko:"
+                    required
+                    error={errors.lastName}
+                    name="lastName"
+                    onChange={handleChange}
+                    value={client.lastName}
+                />
+
+                <FormInput
+                    type="email"
+                    label="Email:"
+                    required
+                    error={errors.email}
+                    name="email"
+                    onChange={handleChange}
+                    value={client.email}
+                />
+
+                {/*<label htmlFor="lastName">Nazwisko: <span className="symbol-required">*</span></label>
                 <input type="text" name="lastName" id="lastName" className="error-input" required/>
                 <span id="errorLastName" className="errors-text"></span>
 
                 <label htmlFor="email">Email: <span className="symbol-required">*</span></label>
                 <input type="email" name="email" id="email" className="error-input" required/>
-                <span id="errorEmail" className="errors-text"></span>
+                <span id="errorEmail" className="errors-text"></span>*/}
 
                 <label>Czy wypłacalny: <span className="symbol-required">*</span></label>
                 <label htmlFor="solvencyTrue">Tak</label>
-                <input type="radio" id="solvencyTrue" name="solvency" value="true" required/>
+                <input type="radio" id="solvencyTrue" name="solvency" value="true"
+                       checked={client.solvency === "true" || client.solvency === true}
+                       onChange={handleChange} required/>
                 <label htmlFor="solvencyFalse">Nie</label>
-                <input type="radio" id="solvencyFalse" name="solvency" value="false" required/>
+                <input type="radio" id="solvencyFalse" name="solvency" value="false"
+                       checked={client.solvency === "false" || client.solvency === false}
+                       onChange={handleChange} required/>
+                <span id="errorSolvency" className="errors-text">{errors.solvency}</span>
 
-                <div className="form-buttons">
+
+                {/*<div className="form-buttons">
                     <p id="errorsSummary" className="errors-text"></p>
                     <input type="submit" value="Dodaj" className="form-button-submit-add"/>
                     <Link to="/clients" className="form-button-cancel">Anuluj</Link>
-                </div>
+                </div>*/}
+                <FormButtons
+                    formMode={formModeHook}
+                    error={globalErrorMessage}
+                    cancelPath="/clients"
+                />
             </form>
         </main>
     );

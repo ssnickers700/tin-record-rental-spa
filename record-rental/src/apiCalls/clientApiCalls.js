@@ -11,3 +11,29 @@ export function getClientByIdApiCall(clientId) {
     const promise = fetch(`${clientsBaseUrl}/${clientId}`);
     return promise;
 }
+
+export function addClientApiCall(client) {
+    const clientString = JSON.stringify(client);
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: clientString
+    };
+    const promise = fetch(clientsBaseUrl, options);
+    return promise;
+}
+
+export function updateClientApiCall(clientId, client) {
+    const clientString = JSON.stringify(client);
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: clientString
+    };
+    const promise = fetch(`${clientsBaseUrl}/${clientId}`, options);
+    return promise;
+}
