@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {getRecordsApiCall} from "../../apiCalls/recordApiCalls";
 import RecordListTable from "./RecordListTable";
 
@@ -7,6 +7,10 @@ function RecordList() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [records, setRecords] = useState([])
+    const location = useLocation();
+    let redirectNotice = location.state ? location.state : "";
+    const popupClassName = location.state ? "popup" : "";
+    //const [notice, setNotice] = useState(redirectNotice);
     let content;
 
     const fetchRecordList = () => {
@@ -39,11 +43,14 @@ function RecordList() {
     }, []);
 
     return (
-        <main>
-            <h2>Lista płyt</h2>
-            {content}
-            <Link to="/records/add" className="button-add">Dodaj nową płytę</Link>
-        </main>
+        <>
+            <div className={popupClassName}>{location.state}</div>
+            <main>
+                <h2>Lista płyt</h2>
+                {content}
+                <Link to="/records/add" className="button-add">Dodaj nową płytę</Link>
+            </main>
+        </>
     )
 }
 

@@ -1,5 +1,5 @@
-import React, {useState , useEffect} from "react";
-import {Link, Navigate, useNavigate, useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import formMode from "../../helpers/formHelper";
 import {addClientApiCall, getClientByIdApiCall, updateClientApiCall} from "../../apiCalls/clientApiCalls";
 import {
@@ -24,7 +24,7 @@ function ClientForm() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(null);
     const [message, setMessage] = useState(null);
-    const [notice, setNotice] = useState(null);
+    //const [notice, setNotice] = useState(null);
 
     const fetchClientDetails = () => {
         getClientByIdApiCall(clientIdHook)
@@ -115,8 +115,7 @@ function ClientForm() {
 
             } else if (currentFormMode === formMode.EDIT) {
                 console.log(clientSubmit)
-                const clientSubmitId = clientIdHook
-                promise = updateClientApiCall(clientSubmitId, clientSubmit)
+                promise = updateClientApiCall(clientIdHook, clientSubmit)
             }
             if (promise) {
                 promise
@@ -166,9 +165,8 @@ function ClientForm() {
     }
 
     const hasErrors = () => {
-        const formErrors = errors;
         for (const fieldName in errors) {
-            if (formErrors[fieldName].length > 0) {
+            if (errors[fieldName].length > 0) {
                 return true;
             }
         }
@@ -200,7 +198,6 @@ function ClientForm() {
     const fetchError = error ? `Błąd: ${message}` : "";
     const pageTitle = formModeHook === formMode.NEW ? "Nowy klient" : "Edycja klienta";
     const globalErrorMessage = errorsSummary || fetchError || message
-
 
     return (
         <main>

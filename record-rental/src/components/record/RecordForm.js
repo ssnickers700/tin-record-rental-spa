@@ -1,32 +1,268 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import formMode from "../../helpers/formHelper";
+import {addRecordApiCall, getRecordByIdApiCall, updateRecordApiCall} from "../../apiCalls/recordApiCalls";
+import {
+    checkInteger,
+    checkNumber,
+    checkNumberRange,
+    checkRequired,
+    checkTextLengthRange,
+    errorRequiredText,
+    getErrorLengthText
+} from "../../helpers/validationCommon";
+import FormInput from "../../form/FormInput";
+import FormButtons from "../../form/FormButtons";
 
 function RecordForm() {
+    let {recordId} = useParams();
+    recordId = parseInt(recordId);
+    let currentFormMode = recordId ? formMode.EDIT : formMode.NEW;
+    const [recordIdHook, setRecordIdHook] = useState(recordId);
+    const [record, setRecord] = useState({recordName: "", artistName: "", price: "", unit: ""});
+    const [errors, setErrors] = useState({recordName: "", artistName: "", price: "", unit: ""});
+    const [formModeHook, setFormModeHook] = useState(currentFormMode);
+    const [redirect, setRedirect] = useState(false);
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(null);
+    const [message, setMessage] = useState(null);
+
+    const fetchRecordDetails = () => {
+        getRecordByIdApiCall(recordIdHook)
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    if (data.message) {
+                        setRecord(null);
+                        setMessage(data.message);
+                    } else {
+                        setRecord(data);
+                        setMessage(null);
+                    }
+                    setIsLoaded(true);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            );
+    }
+
+    useEffect(() => {
+        if (formModeHook === formMode.EDIT) {
+            fetchRecordDetails();
+        }
+    }, []);
+
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        const recordChange = {...record};
+        recordChange[name] = value;
+
+        const errorMessage = validateField(name, value);
+        const errorsChange = {...errors};
+        errorsChange[name] = errorMessage;
+
+        setRecord(recordChange);
+        setErrors(errorsChange);
+        setError(null);
+    }
+
+    const validateField = (fieldName, fieldValue) => {
+        let errorMessage = "";
+        if (fieldName === "recordName") {
+            if (!checkRequired(fieldValue)) {
+                errorMessage = errorRequiredText;
+            } else if (!checkTextLengthRange(fieldValue, 1, 60)) {
+                errorMessage = getErrorLengthText(1, 60);
+            }
+        }
+        if (fieldName === "artistName") {
+            if (!checkRequired(fieldValue)) {
+                errorMessage = errorRequiredText;
+            } else if (!checkTextLengthRange(fieldValue, 1, 60)) {
+                errorMessage = getErrorLengthText(1, 60);
+            }
+        }
+        if (fieldName === "price") {
+            if (!checkRequired(fieldValue)) {
+                errorMessage = errorRequiredText;
+            } else if (!checkNumber(fieldValue)) {
+                errorMessage = "Wartość powinna być liczbą";
+            } else if (!checkNumberRange(fieldValue, 0, 1_000_000)) {
+                errorMessage = "Podaj wartość od 0 do 1,000,000";
+            }
+        }
+        if (fieldName === "unit") {
+            if (!checkRequired(fieldValue)) {
+                errorMessage = errorRequiredText;
+            } else if (!checkNumber(fieldValue)) {
+                errorMessage = "Wartość powinna być liczbą";
+            } else if (!checkNumberRange(fieldValue, 0, 1_000_000)) {
+                errorMessage = "Podaj wartość od 0 do 1,000,000";
+            } else if (!checkInteger(fieldValue)) {
+                errorMessage = "Wartość powinna być liczbą całkowitą";
+            }
+        }
+        return errorMessage;
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const isValid = validateForm()
+        if (isValid) {
+            const
+                recordSubmit = record,
+                currentFormMode = formModeHook
+            let
+                promise,
+                response;
+            if (currentFormMode === formMode.NEW) {
+                promise = addRecordApiCall(recordSubmit)
+
+            } else if (currentFormMode === formMode.EDIT) {
+                console.log(recordSubmit)
+                promise = updateRecordApiCall(recordIdHook, recordSubmit)
+            }
+            if (promise) {
+                promise
+                    .then(
+                        (data) => {
+                            response = data
+                            if (response.status === 201 || response.status === 500) {
+                                return data.json()
+                            }
+                        })
+                    .then(
+                        (data) => {
+                            if (!response.ok && response.status === 500) {
+                                console.log(data)
+                                for (const i in data) {
+                                    const errorItem = data[i]
+                                    const errorMessage = errorItem.message
+                                    const fieldName = errorItem.path
+                                    const errorsResponse = {...errors}
+                                    errorsResponse[fieldName] = errorMessage
+                                    setErrors(errorsResponse);
+                                    setError(null);
+                                }
+                            } else {
+                                setRedirect(true);
+                            }
+                        },
+                        (error) => {
+                            setError(error);
+                            console.log(JSON.stringify(error))
+                        }
+                    )
+            }
+        }
+    }
+
+    const validateForm = () => {
+        const formRecord = record;
+        const formErrors = {...errors};
+        for (const fieldName in formRecord) {
+            const fieldValue = formRecord[fieldName];
+            const errorMessage = validateField(fieldName, fieldValue);
+            formErrors[fieldName] = errorMessage;
+        }
+        setErrors(formErrors);
+        return !hasErrors();
+    }
+
+    const hasErrors = () => {
+        for (const fieldName in errors) {
+            if (errors[fieldName].length > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    const navigate = useNavigate();
+    if (redirect) {
+        const currentFormMode = formModeHook;
+        const notice = currentFormMode === formMode.NEW ?
+            "Płyta została dodana" : 'Płyta została edytowana'
+        return (
+            navigate("/records", {
+                state: notice,
+            })
+        )
+    }
+
+    const errorsSummary = hasErrors() ? "Formularz zawiera błędy" : "";
+    const fetchError = error ? `Błąd: ${message}` : "";
+    const pageTitle = formModeHook === formMode.NEW ? "Nowa płyta" : "Edycja płyty";
+    const globalErrorMessage = errorsSummary || fetchError || message
+
     return (
         <main>
-            <h2>Nowa płyta</h2>
-            <form className="form">
-                <label htmlFor="recordName">Tytuł: <span className="symbol-required">*</span></label>
+            <h2>{pageTitle}</h2>
+            <form className="form" onSubmit={handleSubmit} noValidate>
+                {/*<label htmlFor="recordName">Tytuł: <span className="symbol-required">*</span></label>
                 <input type="text" name="recordName" id="recordName" className="error-input" required/>
-                <span id="errorRecordName" className="errors-text"></span>
+                <span id="errorRecordName" className="errors-text"></span>*/}
+                <FormInput
+                    type="text"
+                    label="Tytuł:"
+                    required
+                    error={errors.recordName}
+                    name="recordName"
+                    onChange={handleChange}
+                    value={record.recordName}
+                />
 
-                <label htmlFor="artistName">Artysta: <span className="symbol-required">*</span></label>
+                {/*<label htmlFor="artistName">Artysta: <span className="symbol-required">*</span></label>
                 <input type="text" name="artistName" id="artistName" className="error-input" required/>
-                <span id="errorArtistName" className="errors-text"></span>
+                <span id="errorArtistName" className="errors-text"></span>*/}
+                <FormInput
+                    type="text"
+                    label="Artysta:"
+                    required
+                    error={errors.artistName}
+                    name="artistName"
+                    onChange={handleChange}
+                    value={record.artistName}
+                />
 
-                <label htmlFor="price">Cena za dzień: <span className="symbol-required">*</span></label>
+                {/*<label htmlFor="price">Cena za dzień: <span className="symbol-required">*</span></label>
                 <input type="number" min="0.00" name="price" id="price" className="error-input" required/>
-                <span id="errorPrice" className="errors-text"></span>
+                <span id="errorPrice" className="errors-text"></span>*/}
+                <FormInput
+                    type="text"
+                    label="Cena za dzień:"
+                    required
+                    error={errors.price}
+                    name="price"
+                    onChange={handleChange}
+                    value={record.price}
+                />
 
-                <label htmlFor="unit">Ilość dostępnych: <span className="symbol-required">*</span></label>
+                {/*<label htmlFor="unit">Ilość dostępnych: <span className="symbol-required">*</span></label>
                 <input type="number" name="unit" id="unit" className="error-input" required/>
-                <span id="errorUnit" className="errors-text"></span>
+                <span id="errorUnit" className="errors-text"></span>*/}
+                <FormInput
+                    type="text"
+                    label="Ilość dostępnych:"
+                    required
+                    error={errors.unit}
+                    name="unit"
+                    onChange={handleChange}
+                    value={record.unit}
+                />
 
-                <div className="form-buttons">
+                {/*<div className="form-buttons">
                     <p id="errorsSummary" className="errors-text"></p>
                     <input type="submit" value="Dodaj" className="form-button-submit-add"/>
                     <Link to="/records" className="form-button-cancel">Anuluj</Link>
-                </div>
+                </div>*/}
+                <FormButtons
+                    formMode={formModeHook}
+                    error={globalErrorMessage}
+                    cancelPath="/records"
+                />
             </form>
         </main>
     );

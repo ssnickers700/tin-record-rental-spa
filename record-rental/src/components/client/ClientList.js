@@ -10,7 +10,7 @@ function ClientList(props) {
     const location = useLocation();
     let redirectNotice = location.state ? location.state : "";
     const popupClassName = location.state ? "popup" : "";
-    const [notice, setNotice] = useState(redirectNotice);
+    //const [notice, setNotice] = useState(redirectNotice);
     let content;
 
     const fetchClientList = () => {
@@ -44,7 +44,7 @@ function ClientList(props) {
 
     return (
         <>
-            <div className={popupClassName}>{notice}</div>
+            <div className={popupClassName}>{location.state}</div>
             <main>
                 <h2>Lista klientów</h2>
                 {content}
