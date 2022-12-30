@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="76895aa8-52da-4835-afb8-61d423f43c33" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/apiCalls/rentalApiCalls.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/apiCalls/rentalApiCalls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/components/client/ClientForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/client/ClientForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/components/record/RecordForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/record/RecordForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/components/rental/RentalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/rental/RentalDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/components/rental/RentalDetailsData.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/rental/RentalDetailsData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/components/rental/RentalForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/rental/RentalForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/components/rental/RentalList.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/rental/RentalList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/form/FormInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/form/FormInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/helpers/validationCommon.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/helpers/validationCommon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/fragments/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/fragments/Navigation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1671569891228</updated>
       <workItem from="1671569892747" duration="849000" />
-      <workItem from="1671570758037" duration="142098000" />
+      <workItem from="1671570758037" duration="143830000" />
     </task>
     <servers />
   </component>
