@@ -76,4 +76,18 @@ export function checkDateIfAfter(value, compareTo) {
     return true;
 }
 
+export function getNowDate() {
+    let dateNow = new Date(),
+        day = '' + dateNow.getUTCDate(),
+        month = '' + (dateNow.getMonth() + 1),
+        year = '' + dateNow.getFullYear();
+    if (month.length < 2) {
+        month = '0' + month;
+    }
+    if (day.length < 2) {
+        day = '0' + day;
+    }
+    return [year, month, day].join('-');
+}
+
 

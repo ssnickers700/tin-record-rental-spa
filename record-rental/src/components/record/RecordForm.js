@@ -137,15 +137,15 @@ function RecordForm() {
                         (data) => {
                             if (!response.ok && response.status === 500) {
                                 console.log(data)
-                                for (const i in data) {
-                                    const errorItem = data[i]
+                                const errorsResponse = {recordName: "", artistName: "", price: "", unit: ""}
+                                for (let i = data.error.errors.length - 1; i >=0; i--) {
+                                    const errorItem = data.error.errors[i]
                                     const errorMessage = errorItem.message
                                     const fieldName = errorItem.path
-                                    const errorsResponse = {...errors}
                                     errorsResponse[fieldName] = errorMessage
-                                    setErrors(errorsResponse);
                                     setError(null);
                                 }
+                                setErrors(errorsResponse);
                             } else {
                                 setRedirect(true);
                             }
@@ -161,13 +161,14 @@ function RecordForm() {
 
     const validateForm = () => {
         const formRecord = record;
-        const formErrors = {...errors};
+        const formErrors = errors;
         for (const fieldName in formRecord) {
             const fieldValue = formRecord[fieldName];
             const errorMessage = validateField(fieldName, fieldValue);
             formErrors[fieldName] = errorMessage;
         }
-        setErrors(formErrors);
+        const formErrors2 = {...formErrors}
+        setErrors(formErrors2);
         return !hasErrors();
     }
 
@@ -184,7 +185,7 @@ function RecordForm() {
     if (redirect) {
         const currentFormMode = formModeHook;
         const notice = currentFormMode === formMode.NEW ?
-            "Płyta została dodana" : 'Płyta została edytowana'
+            "Płyta została dodana" : "Płyta została edytowana"
         return (
             navigate("/records", {
                 state: notice,
@@ -201,9 +202,6 @@ function RecordForm() {
         <main>
             <h2>{pageTitle}</h2>
             <form className="form" onSubmit={handleSubmit} noValidate>
-                {/*<label htmlFor="recordName">Tytuł: <span className="symbol-required">*</span></label>
-                <input type="text" name="recordName" id="recordName" className="error-input" required/>
-                <span id="errorRecordName" className="errors-text"></span>*/}
                 <FormInput
                     type="text"
                     label="Tytuł:"
@@ -214,9 +212,6 @@ function RecordForm() {
                     value={record.recordName}
                 />
 
-                {/*<label htmlFor="artistName">Artysta: <span className="symbol-required">*</span></label>
-                <input type="text" name="artistName" id="artistName" className="error-input" required/>
-                <span id="errorArtistName" className="errors-text"></span>*/}
                 <FormInput
                     type="text"
                     label="Artysta:"
@@ -227,9 +222,6 @@ function RecordForm() {
                     value={record.artistName}
                 />
 
-                {/*<label htmlFor="price">Cena za dzień: <span className="symbol-required">*</span></label>
-                <input type="number" min="0.00" name="price" id="price" className="error-input" required/>
-                <span id="errorPrice" className="errors-text"></span>*/}
                 <FormInput
                     type="text"
                     label="Cena za dzień:"
@@ -240,9 +232,6 @@ function RecordForm() {
                     value={record.price}
                 />
 
-                {/*<label htmlFor="unit">Ilość dostępnych: <span className="symbol-required">*</span></label>
-                <input type="number" name="unit" id="unit" className="error-input" required/>
-                <span id="errorUnit" className="errors-text"></span>*/}
                 <FormInput
                     type="text"
                     label="Ilość dostępnych:"
@@ -253,11 +242,6 @@ function RecordForm() {
                     value={record.unit}
                 />
 
-                {/*<div className="form-buttons">
-                    <p id="errorsSummary" className="errors-text"></p>
-                    <input type="submit" value="Dodaj" className="form-button-submit-add"/>
-                    <Link to="/records" className="form-button-cancel">Anuluj</Link>
-                </div>*/}
                 <FormButtons
                     formMode={formModeHook}
                     error={globalErrorMessage}

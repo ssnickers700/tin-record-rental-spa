@@ -24,7 +24,6 @@ function ClientForm() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(null);
     const [message, setMessage] = useState(null);
-    //const [notice, setNotice] = useState(null);
 
     const fetchClientDetails = () => {
         getClientByIdApiCall(clientIdHook)
@@ -130,15 +129,15 @@ function ClientForm() {
                         (data) => {
                             if (!response.ok && response.status === 500) {
                                 console.log(data)
-                                for (const i in data) {
-                                    const errorItem = data[i]
+                                const errorsResponse = {firstName: "", lastName: "", email: "", solvency: ""}
+                                for (let i = data.error.errors.length - 1; i >=0; i--) {
+                                    const errorItem = data.error.errors[i]
                                     const errorMessage = errorItem.message
                                     const fieldName = errorItem.path
-                                    const errorsResponse = {...errors}
                                     errorsResponse[fieldName] = errorMessage
-                                    setErrors(errorsResponse);
                                     setError(null);
                                 }
+                                setErrors(errorsResponse);
                             } else {
                                 setRedirect(true);
                             }
@@ -154,13 +153,14 @@ function ClientForm() {
 
     const validateForm = () => {
         const formClient = client;
-        const formErrors = {...errors};
+        const formErrors = errors;
         for (const fieldName in formClient) {
             const fieldValue = formClient[fieldName];
             const errorMessage = validateField(fieldName, fieldValue);
             formErrors[fieldName] = errorMessage;
         }
-        setErrors(formErrors);
+        const formErrors2 = {...formErrors}
+        setErrors(formErrors2);
         return !hasErrors();
     }
 
@@ -174,23 +174,14 @@ function ClientForm() {
     }
 
     const navigate = useNavigate();
-    const currentRedirect = redirect;
     if (redirect) {
         const currentFormMode = formModeHook;
         const notice = currentFormMode === formMode.NEW ?
-            "Pracownik został dodany" : 'Pracownik został edytowany'
+            "Pracownik został dodany" : "Pracownik został edytowany"
         return (
             navigate("/clients", {
                 state: notice,
             })
-            /*<Navigate to={{
-                pathname: "/clients",
-                hash: "popup-add",
-                state: {
-                    notice: notice
-                },
-                search: notice
-            }} />*/
         )
     }
 
@@ -203,9 +194,6 @@ function ClientForm() {
         <main>
             <h2>{pageTitle}</h2>
             <form className="form" onSubmit={handleSubmit} noValidate>
-                {/*<label htmlFor="firstName">Imię: <span className="symbol-required">*</span></label>
-                <input type="text" name="firstName" id="firstName" className="error-input" required/>
-                <span id="errorFirstName" className="errors-text"></span>*/}
                 <FormInput
                     type="text"
                     label="Imię:"
@@ -236,14 +224,6 @@ function ClientForm() {
                     value={client.email}
                 />
 
-                {/*<label htmlFor="lastName">Nazwisko: <span className="symbol-required">*</span></label>
-                <input type="text" name="lastName" id="lastName" className="error-input" required/>
-                <span id="errorLastName" className="errors-text"></span>
-
-                <label htmlFor="email">Email: <span className="symbol-required">*</span></label>
-                <input type="email" name="email" id="email" className="error-input" required/>
-                <span id="errorEmail" className="errors-text"></span>*/}
-
                 <label>Czy wypłacalny: <span className="symbol-required">*</span></label>
                 <label htmlFor="solvencyTrue">Tak</label>
                 <input type="radio" id="solvencyTrue" name="solvency" value="true"
@@ -255,12 +235,6 @@ function ClientForm() {
                        onChange={handleChange} required/>
                 <span id="errorSolvency" className="errors-text">{errors.solvency}</span>
 
-
-                {/*<div className="form-buttons">
-                    <p id="errorsSummary" className="errors-text"></p>
-                    <input type="submit" value="Dodaj" className="form-button-submit-add"/>
-                    <Link to="/clients" className="form-button-cancel">Anuluj</Link>
-                </div>*/}
                 <FormButtons
                     formMode={formModeHook}
                     error={globalErrorMessage}

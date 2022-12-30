@@ -4,33 +4,19 @@ import {Link} from "react-router-dom";
 
 function RentalDetailsData(props) {
     const rental = props.rentalData;
-    const allClients = props.allClients;
-    const allRecords = props.allRecords;
 
     return (
         <>
             <form className="form">
                 <label htmlFor="client">Klient: <span className="symbol-required">*</span></label>
                 <select name="client" id="client" required disabled>
-                    <option value>Wybierz klienta</option>
-                    {allClients.map(client =>
-                        (<option key={client._id} value={client._id}
-                                 label={client.firstName + " " + client.lastName}
-                                 selected={client._id === rental.client._id ? "selected" : ""}>
-                        </option>)
-                    )}
+                    <option label={rental.client.firstName + " " + rental.client.lastName} />
                 </select>
                 <span id="errorClient" className="errors-text"></span>
 
                 <label htmlFor="record">Płyta: <span className="symbol-required">*</span></label>
                 <select name="record" id="record" required disabled>
-                    <option value>Wybierz płytę</option>
-                    {allRecords.map(record =>
-                        (<option key={record._id} value={record._id}
-                                 label={record.recordName + " - " + record.artistName}
-                                 selected={record._id === rental.record._id ? "selected" : ""}>
-                        </option>)
-                    )}
+                    <option label={rental.record.recordName + " - " + rental.record.artistName} />
                 </select>
                 <span id="errorRecord" className="errors-text"></span>
 

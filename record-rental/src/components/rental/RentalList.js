@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {getRentalsApiCall} from "../../apiCalls/rentalApiCalls";
 import {useEffect, useState} from "react";
 import RentalListTable from "./RentalListTable";
@@ -8,6 +8,8 @@ function RentalList() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [rentals, setRentals] = useState([]);
+    const location = useLocation();
+    const popupClassName = location.state ? "popup" : "";
     let content;
 
     const fetchRentalList = () => {
@@ -40,11 +42,14 @@ function RentalList() {
     }
 
     return (
-        <main>
-            <h2>Lista wynajmów</h2>
-            {content}
-            <Link to="/rentals/add" className="button-add">Dodaj nowy wynajem</Link>
-        </main>
+        <>
+            <div className={popupClassName}>{location.state}</div>
+            <main>
+                <h2>Lista wynajmów</h2>
+                {content}
+                <Link to="/rentals/add" className="button-add">Dodaj nowy wynajem</Link>
+            </main>
+        </>
     )
 }
 
