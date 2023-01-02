@@ -12,7 +12,10 @@ function ClientListTableRow(props) {
                 <ul className="list-actions">
                     <li><Link to={`/clients/details/${client._id}`} className="list-actions-button-details">Szczegóły</Link></li>
                     <li><Link to={`/clients/edit/${client._id}`} className="list-actions-button-edit">Edytuj</Link></li>
-                    <li><Link to={`/clients/delete/${client._id}`} className="list-actions-button-delete">Usuń</Link>
+                    <li><Link onClick={() => {
+                        props.toggleConfirmPopup(!props.confirmPopup)
+                        props.setDeleteClientId(client._id);
+                    }} className="list-actions-button-delete">Usuń</Link>
                     </li>
                 </ul>
             </td>

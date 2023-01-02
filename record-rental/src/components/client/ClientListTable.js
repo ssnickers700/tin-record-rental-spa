@@ -15,7 +15,13 @@ function ClientListTable(props) {
             </thead>
             <tbody>
             {clients.map(client =>
-                <ClientListTableRow clientData={client} key={client._id} />
+                <ClientListTableRow
+                    clientData={client}
+                    key={client._id}
+                    toggleConfirmPopup={props.toggleConfirmPopup}
+                    confirmPopup={props.confirmPopup}
+                    setDeleteClientId={props.setDeleteClientId}
+                />
             )}
             </tbody>
         </table>

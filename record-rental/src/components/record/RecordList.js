@@ -51,7 +51,7 @@ function RecordList() {
         <>
             {confirmPopup &&
                 <div id="confirm-popup-delete">
-                    <p>Czy na pewno chcesz usunąć klienta?</p>
+                    <p>Czy na pewno chcesz usunąć płytę?</p>
                     <Link onClick={
                         deleteRecordApiCall(deleteRecordId)
                     } className="confirm-popup-yes-button">Tak</Link>

@@ -37,3 +37,14 @@ export function updateClientApiCall(clientId, client) {
     const promise = fetch(`${clientsBaseUrl}/${clientId}`, options);
     return promise;
 }
+
+export function deleteClientApiCall(clientId) {
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json"
+        },
+    };
+    const promise = fetch(`${clientsBaseUrl}/${clientId}`, options);
+    return promise;
+}
