@@ -8,9 +8,7 @@ function ClientList(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [clients, setClients] = useState([]);
     const location = useLocation();
-    let redirectNotice = location.state ? location.state : "";
     const popupClassName = location.state ? "popup" : "";
-    //const [notice, setNotice] = useState(redirectNotice);
     let content;
 
     const fetchClientList = () => {

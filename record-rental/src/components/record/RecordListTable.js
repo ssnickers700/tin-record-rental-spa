@@ -16,7 +16,13 @@ function RecordListTable(props) {
             </thead>
             <tbody>
             {records.map(record =>
-                <RecordListTableRow recordData={record} key={record._id} />
+                <RecordListTableRow
+                    recordData={record}
+                    key={record._id}
+                    toggleConfirmPopup={props.toggleConfirmPopup}
+                    confirmPopup={props.confirmPopup}
+                    setDeleteRecordId={props.setDeleteRecordId}
+                />
             )}
             </tbody>
         </table>

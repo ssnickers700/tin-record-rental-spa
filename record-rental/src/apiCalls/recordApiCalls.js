@@ -38,3 +38,14 @@ export function updateRecordApiCall(recordId, record) {
     const promise = fetch(`${recordsBaseUrl}/${recordId}`, options);
     return promise;
 }
+
+export function deleteRecordApiCall(recordId) {
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json"
+        },
+    };
+    const promise = fetch(`${recordsBaseUrl}/${recordId}`, options);
+    return promise;
+}

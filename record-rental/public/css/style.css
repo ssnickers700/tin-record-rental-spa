@@ -360,7 +360,7 @@ form select.error-input {
 }
 
 #confirm-popup-delete {
-    display: none;
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -371,9 +371,9 @@ form select.error-input {
     padding: 2rem;
 }
 
-#confirm-popup-delete:target {
+/*#confirm-popup-delete:target {
     display: block;
-}
+}*/
 
 #confirm-popup-delete p{
     margin: 0 0 2rem 0;
