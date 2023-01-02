@@ -1,6 +1,6 @@
 import React from "react";
 import {Link, useLocation} from "react-router-dom";
-import {getRentalsApiCall} from "../../apiCalls/rentalApiCalls";
+import {deleteRentalApiCall, getRentalsApiCall} from "../../apiCalls/rentalApiCalls";
 import {useEffect, useState} from "react";
 import RentalListTable from "./RentalListTable";
 
@@ -8,6 +8,8 @@ function RentalList() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [rentals, setRentals] = useState([]);
+    const [confirmPopup, toggleConfirmPopup] = useState(false);
+    const [deleteRentalId, setDeleteRentalId] = useState(null);
     const location = useLocation();
     const popupClassName = location.state ? "popup" : "";
     let content;
@@ -38,11 +40,27 @@ function RentalList() {
     } else if (!rentals.length) {
         content = <p>Brak danych wynajów</p>;
     } else {
-        content = <RentalListTable rentalList={rentals} />
+        content = <RentalListTable
+            rentalList={rentals}
+            toggleConfirmPopup={toggleConfirmPopup}
+            confirmPopup={confirmPopup}
+            setDeleteRentalId={setDeleteRentalId}
+        />
     }
 
     return (
         <>
+            {confirmPopup &&
+                <div id="confirm-popup-delete">
+                    <p>Czy na pewno chcesz usunąć wynajem?</p>
+                    <Link onClick={
+                        deleteRentalApiCall(deleteRentalId)
+                    } className="confirm-popup-yes-button">Tak</Link>
+                    <Link onClick={() =>
+                        toggleConfirmPopup(!confirmPopup)
+                    } className="confirm-popup-cancel-button">Anuluj</Link>
+                </div>
+            }
             <div className={popupClassName}>{location.state}</div>
             <main>
                 <h2>Lista wynajmów</h2>

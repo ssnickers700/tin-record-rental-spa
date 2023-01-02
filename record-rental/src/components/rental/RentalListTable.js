@@ -16,7 +16,12 @@ function RentalListTable(props) {
             </thead>
             <tbody>
             {rentals.map(rental =>
-                <RentalListTableRow rentalData={rental} key={rental._id} />
+                <RentalListTableRow
+                    rentalData={rental}
+                    key={rental._id}
+                    toggleConfirmPopup={props.toggleConfirmPopup}
+                    confirmPopup={props.confirmPopup}
+                    setDeleteRentalId={props.setDeleteRentalId}/>
             )}
             </tbody>
         </table>

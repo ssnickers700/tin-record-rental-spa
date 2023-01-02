@@ -37,3 +37,14 @@ export function updateRentalApiCall(rentalId, rental) {
     const promise = fetch(`${rentalsBaseUrl}/${rentalId}`, options);
     return promise;
 }
+
+export function deleteRentalApiCall(rentalId) {
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json"
+        },
+    };
+    const promise = fetch(`${rentalsBaseUrl}/${rentalId}`, options);
+    return promise;
+}
