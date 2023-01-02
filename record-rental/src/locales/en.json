@@ -1,0 +1,131 @@
+{
+  "main-page": {
+    "content": "Main page",
+    "description": "We are not only record rental, we offer access to the unique experience of analog music sensation at your fingertips. Following global trend access economy trend, we have kept our weak spot for enjoying music in its traditional form, which have an impact on interpretation of a piece of work. We try to propagate this idea with every rental and we hope it will last after rental ends."
+  },
+  "nav": {
+    "main-page": "Main page",
+    "clients": "Clients",
+    "records": "Records",
+    "rentals": "Rentals"
+  },
+  "list": {
+    "actions": {
+      "title": "Actions",
+      "details": "Details",
+      "edit": "Edit",
+      "delete": "Delete"
+    }
+  },
+  "form": {
+    "actions": {
+      "return": "Return",
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "add": "Add"
+    }
+  },
+  "client": {
+    "fields": {
+      "firstName": "First name:",
+      "lastName": "Last name:",
+      "email": "Email:",
+      "solvency": "Solvable:"
+    },
+    "list": {
+      "title": "Clients",
+      "addNew": "Add new client",
+      "noData": "No clients in database",
+      "pageTitle": "List of clients"
+    },
+    "form": {
+      "employment": "History of rentals",
+      "add": {
+        "pageTitle": "Add client form",
+        "btnLabel": "Addd",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "Client has been added"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edit client form",
+        "btnLabel": "Edit",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "Client has been edited"
+        }
+      }
+    }
+  },
+  "record": {
+    "fields": {
+      "recordName:": "Title:",
+      "artistName": "Artist:",
+      "price": "Price per day:",
+      "unit": "Number of available:"
+    },
+    "list": {
+      "title": "Records",
+      "addNew": "Add new records",
+      "noData": "No records in database",
+      "pageTitle": "List of records"
+    },
+    "form": {
+      "employment": "History of rentals",
+      "add": {
+        "pageTitle": "Add record form",
+        "btnLabel": "Add",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "Record has been added"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edit record form",
+        "btnLabel": "Edit",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "Record has been added"
+        }
+      }
+    }
+  },
+  "rental": {
+    "fields": {
+      "client": "Client:",
+      "record": "Record:",
+      "startDate": "Start date:",
+      "endDate": "End date:"
+    },
+    "list": {
+      "title": "Rentals",
+      "addNew": "Add new rental",
+      "noData": "No rentals in database",
+      "pageTitle": "List of rentals"
+    },
+    "details": {
+      "price": "Price per day:",
+      "email": "Client's email:",
+      "solvency": "Is client solvable:"
+    },
+    "form": {
+      "add": {
+        "pageTitle": "Add rental form",
+        "btnLabel": "Add",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "Rental has been added"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edit rental from",
+        "btnLabel": "Edit",
+        "confirm": {
+          "header": "Confirmation",
+          "text": "Rental has been added"
+        }
+      }
+    }
+  }
+}

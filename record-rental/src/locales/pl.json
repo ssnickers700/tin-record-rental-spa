@@ -1,0 +1,131 @@
+{
+  "main-page": {
+    "content": "Strona główna",
+    "description": "Jesteśmy nie tylko wypożyczalnią płyt, oferujemy również dostęp do unikalnego doświadczenia analogowych wrażeń muzycznych na wyciągnięcie ręki. Idąc zgodnie z globalnym trendem access economy, również zachowaliśmy wrażliwość na cieszenie się muzyką w jej tradycyjnej formie, która to forma zmienia interpretację dzieła muzycznego z jakim się stykamy. Tą idee staramy się nieść z każdym wypożyczeniem oraz mamy nadzieje, że zostanie ona po jego trwaniu."
+  },
+  "nav": {
+    "main-page": "Strona główna",
+    "clients": "Klienci",
+    "records": "Płyty",
+    "rentals": "Wynajmy"
+  },
+  "list": {
+    "actions": {
+      "title": "Akcje",
+      "details": "Szczegóły",
+      "edit": "Edytuj",
+      "delete": "Usuń"
+    }
+  },
+  "form": {
+    "actions": {
+      "return": "Powrót",
+      "edit": "Edytuj",
+      "cancel": "Anuluj",
+      "add": "Dodaj"
+    }
+  },
+  "client": {
+    "fields": {
+      "firstName": "Imię:",
+      "lastName": "Nazwisko:",
+      "email": "Email:",
+      "solvency": "Czy wypłacalny:"
+    },
+    "list": {
+      "title": "Klienci",
+      "addNew": "Dodaj nowego klienta",
+      "noData": "Brak klientów w bazie",
+      "pageTitle": "Lista klientów"
+    },
+    "form": {
+      "employment": "Historia wynajmów",
+      "add": {
+        "pageTitle": "Dodawanie klienta",
+        "btnLabel": "Dodaj",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Klient został dodany"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edycja klienta",
+        "btnLabel": "Edytuj",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Klient został edytowany"
+        }
+      }
+    }
+  },
+  "record": {
+    "fields": {
+      "recordName:": "Tytuł:",
+      "artistName": "Artysta:",
+      "price": "Cena za dzień:",
+      "unit": "Ilość dostępnych:"
+    },
+    "list": {
+      "title": "Płyty",
+      "addNew": "Dodaj nową płytę",
+      "noData": "Brak płyt w bazie",
+      "pageTitle": "Lista płyt"
+    },
+    "form": {
+      "employment": "Historia wynajmów",
+      "add": {
+        "pageTitle": "Dodawanie płyty",
+        "btnLabel": "Dodaj",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Płyta został dodany"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edycja płyty",
+        "btnLabel": "Edytuj",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Płyta została edytowana"
+        }
+      }
+    }
+  },
+  "rental": {
+    "fields": {
+      "client": "Klient:",
+      "record": "Płyta:",
+      "startDate": "Data od:",
+      "endDate": "Data do:"
+    },
+    "list": {
+      "title": "Wynajmy",
+      "addNew": "Dodaj nowy wynajem",
+      "noData": "Brak wynajmów w bazie",
+      "pageTitle": "Lista wynajmów"
+    },
+    "details": {
+      "price": "Cena za dzień:",
+      "email": "Email klienta:",
+      "solvency": "Czy klient wypłacalny:"
+    },
+    "form": {
+      "add": {
+        "pageTitle": "Dodawanie wynajmu",
+        "btnLabel": "Dodaj",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Wynajem został dodany"
+        }
+      },
+      "edit": {
+        "pageTitle": "Edycja wynajmu",
+        "btnLabel": "Edytuj",
+        "confirm": {
+          "header": "Potwierdzenie operacji",
+          "text": "Wynajem został edytowany"
+        }
+      }
+    }
+  }
+}

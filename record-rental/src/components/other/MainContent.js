@@ -1,14 +1,13 @@
 import React from "react";
+import {useTranslation} from "react-i18next";
 
 function MainContent() {
+    const { t } = useTranslation()
+
     return (
         <main>
-            <h2>Strona główna</h2>
-            <p>Jesteśmy nie tylko wypożyczalnią płyt, oferujemy również dostęp do unikalnego doświadczenia
-                analogowych wrażeń muzycznych na wyciągnięcie ręki. Idąc zgodnie z globalnym trendem access
-                economy, również zachowaliśmy wrażliwość na cieszenie się muzyką w jej tradycyjnej formie,
-                która to forma zmienia interpretację dzieła muzycznego z jakim się stykamy. Tą idee staramy się
-                nieść z każdym wypożyczeniem oraz mamy nadzieje, że zostanie ona po jego trwaniu.</p>
+            <h2>{t("main-page.content")}</h2>
+            <p>{t("main-page.description")}</p>
         </main>
     )
 }
