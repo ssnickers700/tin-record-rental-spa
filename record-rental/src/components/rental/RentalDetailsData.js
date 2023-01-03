@@ -2,20 +2,22 @@ import React from "react";
 import {getFormattedDate} from "../../helpers/dateHelper";
 import {Link} from "react-router-dom";
 import FormInput from "../../form/FormInput";
+import {useTranslation} from "react-i18next";
 
 function RentalDetailsData(props) {
     const rental = props.rentalData;
+    const { t } = useTranslation();
 
     return (
         <>
             <form className="form">
-                <label htmlFor="client">Klient: <span className="symbol-required">*</span></label>
+                <label htmlFor="client">{t("rental.fields.client")}<span className="symbol-required">*</span></label>
                 <select name="client" id="client" required disabled>
                     <option label={rental.client.firstName + " " + rental.client.lastName} />
                 </select>
                 <span id="errorClient" className="errors-text"></span>
 
-                <label htmlFor="record">Płyta: <span className="symbol-required">*</span></label>
+                <label htmlFor="record">{t("rental.fields.record")}<span className="symbol-required">*</span></label>
                 <select name="record" id="record" required disabled>
                     <option label={rental.record.recordName + " - " + rental.record.artistName} />
                 </select>
@@ -23,7 +25,7 @@ function RentalDetailsData(props) {
 
                 <FormInput
                     type="date"
-                    label="Data od:"
+                    label={t("rental.fields.startDate")}
                     name="startDate"
                     value={rental.startDate ? getFormattedDate(rental.startDate) : ""}
                     disabled
@@ -31,7 +33,7 @@ function RentalDetailsData(props) {
 
                 <FormInput
                     type="date"
-                    label="Data do:"
+                    label={t("rental.fields.endDate")}
                     name="endDate"
                     value={rental.endDate ? getFormattedDate(rental.endDate) : ""}
                     disabled
@@ -39,7 +41,7 @@ function RentalDetailsData(props) {
 
                 <FormInput
                     type="number"
-                    label="Cena za dzień:"
+                    label={t("rental.form.details.price")}
                     name="price"
                     value={rental.record.price}
                     disabled
@@ -47,21 +49,21 @@ function RentalDetailsData(props) {
 
                 <FormInput
                     type="email"
-                    label="Email klienta:"
+                    label={t("rental.form.details.email")}
                     name="email"
                     value={rental.client.email}
                     disabled
                 />
 
-                <label>Czy klient wypłacalny:</label>
-                <label htmlFor="solvencyTrue">Tak</label>
+                <label>{t("rental.form.details.solvency")}</label>
+                <label htmlFor="solvencyTrue">{t("client.fields.yes")}</label>
                 <input type="radio" id="solvencyTrue" name="solvency" value="true"
                        disabled checked={rental.client.solvency === true ? "checked" : ""}/>
-                <label htmlFor="solvencyFalse">Nie</label>
+                <label htmlFor="solvencyFalse">{t("client.fields.no")}</label>
                 <input type="radio" id="solvencyFalse" name="solvency" value="false"
                        disabled checked={rental.client.solvency === true ? "" : "checked"}/>
             </form>
-            <Link to={`/rentals/edit/${rental._id}`} className="button-edit">Edytuj</Link>
+            <Link to={`/rentals/edit/${rental._id}`} className="button-edit">{t("form.actions.edit")}</Link>
         </>
     );
 }

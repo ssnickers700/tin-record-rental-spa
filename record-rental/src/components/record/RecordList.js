@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {deleteRecordApiCall, getRecordsApiCall} from "../../apiCalls/recordApiCalls";
 import RecordListTable from "./RecordListTable";
+import {useTranslation} from "react-i18next";
 
 function RecordList() {
     const [error, setError] = useState(null);
@@ -11,6 +12,7 @@ function RecordList() {
     const [deleteRecordId, setDeleteRecordId] = useState(null);
     const location = useLocation();
     const popupClassName = location.state ? "popup" : "";
+    const { t } = useTranslation();
     let content;
 
     const fetchRecordList = () => {
@@ -29,7 +31,7 @@ function RecordList() {
     }
 
     if (error) {
-        content = <p>Błąd: {error.message}</p>
+        content = <p>{t("rendering.error")}{error.message}</p>
     } else if (!isLoaded) {
         content = <p>Ładowanie danych płyt...</p>;
     } else if (!records.length) {

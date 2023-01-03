@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import {getClientByIdApiCall} from "../../apiCalls/clientApiCalls";
 import ClientDetailsData from "./ClientDetailsData";
+import {useTranslation} from "react-i18next";
 
 function ClientDetails() {
     let {clientId} = useParams();
@@ -11,6 +12,7 @@ function ClientDetails() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(null);
     const [message, setMessage] = useState(null);
+    const { t } = useTranslation();
     let content;
 
     const fetchClientDetails = () => {
@@ -39,9 +41,9 @@ function ClientDetails() {
     }, []);
 
     if (error) {
-        content = <p>Błąd: {error.message}</p>
+        content = <p>{t("render.error")}{error.message}</p>
     } else if (!isLoaded) {
-        content = <p>Ładowanie danych klienta...</p>;
+        content = <p>{t("render.loading")}</p>;
     } else if (message) {
         content = <p>{message}</p>;
     } else {
@@ -50,9 +52,9 @@ function ClientDetails() {
 
     return (
         <main>
-            <h2>Szczegóły klienta</h2>
+            <h2>{t("client.form.details.pageTitle")}</h2>
             {content}
-            <Link to="/clients" className="button-back">Powrót</Link>
+            <Link to="/clients" className="button-back">{t("form.actions.return")}</Link>
         </main>
     );
 }

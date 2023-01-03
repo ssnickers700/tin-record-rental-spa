@@ -25,12 +25,18 @@
       "add": "Add"
     }
   },
+  "render": {
+    "loading": "Loading...",
+    "error": "Error: "
+  },
   "client": {
     "fields": {
-      "firstName": "First name:",
-      "lastName": "Last name:",
-      "email": "Email:",
-      "solvency": "Solvable:"
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "solvency": "Solvable",
+      "yes": "Yes",
+      "no": "No"
     },
     "list": {
       "title": "Clients",
@@ -39,10 +45,13 @@
       "pageTitle": "List of clients"
     },
     "form": {
-      "employment": "History of client's rentals",
+      "details": {
+        "pageTitle": "Client's details",
+        "employment": "History of client's rentals"
+      },
       "add": {
         "pageTitle": "Add client form",
-        "btnLabel": "Addd",
+        "btnLabel": "Add",
         "confirm": {
           "header": "Confirmation",
           "text": "Client has been added"
@@ -60,10 +69,10 @@
   },
   "record": {
     "fields": {
-      "recordName:": "Title:",
-      "artistName": "Artist:",
-      "price": "Price per day:",
-      "unit": "Number of available:"
+      "recordName": "Title",
+      "artistName": "Artist",
+      "price": "Price per day",
+      "unit": "Number of available"
     },
     "list": {
       "title": "Records",
@@ -72,7 +81,10 @@
       "pageTitle": "List of records"
     },
     "form": {
-      "employment": "History of record's rentals",
+      "details": {
+        "pageTitle": "Record details",
+        "employment": "History of record rentals"
+      },
       "add": {
         "pageTitle": "Add record form",
         "btnLabel": "Add",
@@ -93,10 +105,10 @@
   },
   "rental": {
     "fields": {
-      "client": "Client:",
-      "record": "Record:",
-      "startDate": "Start date:",
-      "endDate": "End date:"
+      "client": "Client",
+      "record": "Record",
+      "startDate": "Start date",
+      "endDate": "End date"
     },
     "list": {
       "title": "Rentals",
@@ -104,12 +116,13 @@
       "noData": "No rentals in database",
       "pageTitle": "List of rentals"
     },
-    "details": {
-      "price": "Price per day:",
-      "email": "Client's email:",
-      "solvency": "Is client solvable:"
-    },
     "form": {
+      "details": {
+        "pageTitle": "Rental details",
+        "price": "Price per day",
+        "email": "Client's email",
+        "solvency": "Is client solvable"
+      },
       "add": {
         "pageTitle": "Add rental form",
         "btnLabel": "Add",

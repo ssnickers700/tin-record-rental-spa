@@ -25,12 +25,18 @@
       "add": "Dodaj"
     }
   },
+  "render": {
+    "loading": "Ładowanie...",
+    "error": "Błąd: "
+  },
   "client": {
     "fields": {
-      "firstName": "Imię:",
-      "lastName": "Nazwisko:",
-      "email": "Email:",
-      "solvency": "Czy wypłacalny:"
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "email": "Email",
+      "solvency": "Czy wypłacalny",
+      "yes": "Tak",
+      "no": "Nie"
     },
     "list": {
       "title": "Klienci",
@@ -39,7 +45,10 @@
       "pageTitle": "Lista klientów"
     },
     "form": {
-      "employment": "Historia wynajmów klienta",
+      "details": {
+        "pageTitle": "Szczegóły klienta",
+        "employment": "Historia wynajmów klienta"
+      },
       "add": {
         "pageTitle": "Dodawanie klienta",
         "btnLabel": "Dodaj",
@@ -60,10 +69,10 @@
   },
   "record": {
     "fields": {
-      "recordName:": "Tytuł:",
-      "artistName": "Artysta:",
-      "price": "Cena za dzień:",
-      "unit": "Ilość dostępnych:"
+      "recordName": "Tytuł",
+      "artistName": "Artysta",
+      "price": "Cena za dzień",
+      "unit": "Ilość dostępnych"
     },
     "list": {
       "title": "Płyty",
@@ -72,7 +81,10 @@
       "pageTitle": "Lista płyt"
     },
     "form": {
-      "employment": "Historia wynajmów płyty",
+      "details": {
+        "pageTitle": "Szczegóły płyty",
+        "employment": "Historia wynajmów płyty"
+      },
       "add": {
         "pageTitle": "Dodawanie płyty",
         "btnLabel": "Dodaj",
@@ -93,10 +105,10 @@
   },
   "rental": {
     "fields": {
-      "client": "Klient:",
-      "record": "Płyta:",
-      "startDate": "Data od:",
-      "endDate": "Data do:"
+      "client": "Klient",
+      "record": "Płyta",
+      "startDate": "Data od",
+      "endDate": "Data do"
     },
     "list": {
       "title": "Wynajmy",
@@ -104,12 +116,13 @@
       "noData": "Brak wynajmów w bazie",
       "pageTitle": "Lista wynajmów"
     },
-    "details": {
-      "price": "Cena za dzień:",
-      "email": "Email klienta:",
-      "solvency": "Czy klient wypłacalny:"
-    },
     "form": {
+      "details": {
+        "pageTitle": "Szczegóły wynajmu",
+        "price": "Cena za dzień",
+        "email": "Email klienta",
+        "solvency": "Czy klient wypłacalny"
+      },
       "add": {
         "pageTitle": "Dodawanie wynajmu",
         "btnLabel": "Dodaj",

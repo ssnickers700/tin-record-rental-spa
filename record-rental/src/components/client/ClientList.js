@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {deleteClientApiCall, getClientsApiCall} from "../../apiCalls/clientApiCalls";
 import ClientListTable from "./ClientListTable";
+import {useTranslation} from "react-i18next";
 
 function ClientList(props) {
     const [error, setError] = useState(null);
@@ -11,6 +12,7 @@ function ClientList(props) {
     const [deleteClientId, setDeleteClientId] = useState(null);
     const location = useLocation();
     const popupClassName = location.state ? "popup" : "";
+    const { t } = useTranslation();
     let content;
 
     const fetchClientList = () => {
@@ -33,7 +35,7 @@ function ClientList(props) {
     }, []);
 
     if (error) {
-        content = <p>Błąd: {error.message}</p>
+        content = <p>{t("rendering.error")}{error.message}</p>
     } else if (!isLoaded) {
         content = <p>Ładowanie danych klientów...</p>;
     } else if (!clients.length) {

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import {getRentalByIdApiCall} from "../../apiCalls/rentalApiCalls";
 import RentalDetailsData from "./RentalDetailsData";
+import {useTranslation} from "react-i18next";
 
 function RentalDetails() {
     let {rentalId} = useParams();
@@ -11,6 +12,7 @@ function RentalDetails() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(null);
     const [message, setMessage] = useState(null);
+    const { t } = useTranslation();
     let content;
 
     const fetchRentalDetails = () => {
@@ -40,9 +42,9 @@ function RentalDetails() {
 
 
     if (error) {
-        content = <p>Błąd: {error.message}</p>
+        content = <p>{t("render.error")}{error.message}</p>
     } else if (!isLoaded) {
-        content = <p>Ładowanie danych wynajmu...</p>;
+        content = <p>{t("render.loading")}</p>;
     } else if (message) {
         content = <p>{message}</p>;
     } else {
@@ -51,9 +53,9 @@ function RentalDetails() {
 
     return (
         <main>
-            <h2>Szczegóły wynajmu</h2>
+            <h2>{t("rental.form.details.pageTitle")}</h2>
             {content}
-            <Link to="/rentals" className="button-back">Powrót</Link>
+            <Link to="/rentals" className="button-back">{t("form.actions.return")}</Link>
         </main>
     );
 }

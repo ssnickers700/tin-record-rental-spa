@@ -2,16 +2,18 @@ import React from "react";
 import {Link} from "react-router-dom";
 import RecordDetailsDataTableRow from "./RecordDetailsDataTableRow";
 import FormInput from "../../form/FormInput";
+import {useTranslation} from "react-i18next";
 
 function RecordDetailsData(props) {
     const record = props.recordData
+    const { t } = useTranslation();
 
     return (
         <>
             <form className="form">
                 <FormInput
                     type="text"
-                    label="Tytuł:"
+                    label={t("record.fields.recordName")}
                     name="recordName"
                     value={record.recordName}
                     disabled
@@ -19,7 +21,7 @@ function RecordDetailsData(props) {
 
                 <FormInput
                     type="text"
-                    label="Artysta:"
+                    label={t("record.fields.artistName")}
                     name="artistName"
                     value={record.artistName}
                     disabled
@@ -27,7 +29,7 @@ function RecordDetailsData(props) {
 
                 <FormInput
                     type="text"
-                    label="Cena za dzień:"
+                    label={t("record.fields.price")}
                     name="price"
                     value={record.price}
                     disabled
@@ -35,21 +37,21 @@ function RecordDetailsData(props) {
 
                 <FormInput
                     type="text"
-                    label="Ilość dostępnych:"
+                    label={t("record.fields.unit")}
                     name="unit"
                     value={record.unit}
                     disabled
                 />
             </form>
-            <Link to={`/records/edit/${record._id}`} className="button-edit">Edytuj</Link>
-            <h2>Szczegóły wypożyczeń płyty</h2>
+            <Link to={`/records/edit/${record._id}`} className="button-edit">{t("form.actions.edit")}</Link>
+            <h2>{t("record.form.details.employment")}</h2>
             <table className="table-list">
                 <thead>
                 <tr>
-                    <th>Imie</th>
-                    <th>Nazwisko</th>
-                    <th>Data od</th>
-                    <th>Data do</th>
+                    <th>{t("client.fields.firstName")}</th>
+                    <th>{t("client.fields.lastName")}</th>
+                    <th>{t("rental.fields.startDate")}</th>
+                    <th>{t("rental.fields.endDate")}</th>
                 </tr>
                 </thead>
                 <tbody>

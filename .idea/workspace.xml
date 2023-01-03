@@ -3,10 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="76895aa8-52da-4835-afb8-61d423f43c33" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/client/ClientDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/client/ClientDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/record-rental/src/components/client/ClientDetailsData.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/client/ClientDetailsData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/client/ClientList.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/client/ClientList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/record/RecordDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/record/RecordDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/record-rental/src/components/record/RecordDetailsData.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/record/RecordDetailsData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/record/RecordList.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/record/RecordList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/rental/RentalDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/rental/RentalDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/record-rental/src/components/rental/RentalDetailsData.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/rental/RentalDetailsData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/form/FormInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/form/FormInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/rental/RentalList.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/rental/RentalList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/record-rental/src/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/locales/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/record-rental/src/locales/pl.json" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/locales/pl.json" afterDir="false" />
     </list>
@@ -51,7 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1671569891228</updated>
       <workItem from="1671569892747" duration="849000" />
-      <workItem from="1671570758037" duration="165631000" />
+      <workItem from="1671570758037" duration="169466000" />
     </task>
     <servers />
   </component>

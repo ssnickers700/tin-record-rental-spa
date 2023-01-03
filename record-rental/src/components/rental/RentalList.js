@@ -3,6 +3,7 @@ import {Link, useLocation} from "react-router-dom";
 import {deleteRentalApiCall, getRentalsApiCall} from "../../apiCalls/rentalApiCalls";
 import {useEffect, useState} from "react";
 import RentalListTable from "./RentalListTable";
+import {useTranslation} from "react-i18next";
 
 function RentalList() {
     const [error, setError] = useState(null);
@@ -12,6 +13,7 @@ function RentalList() {
     const [deleteRentalId, setDeleteRentalId] = useState(null);
     const location = useLocation();
     const popupClassName = location.state ? "popup" : "";
+    const { t } = useTranslation();
     let content;
 
     const fetchRentalList = () => {
@@ -34,7 +36,7 @@ function RentalList() {
     }, []);
 
     if (error) {
-        content = <p>Błąd: {error.message}</p>
+        content = <p>{t("rendering.error")}{error.message}</p>
     } else if (!isLoaded) {
         content = <p>Ładowanie danych wynajmów...</p>;
     } else if (!rentals.length) {

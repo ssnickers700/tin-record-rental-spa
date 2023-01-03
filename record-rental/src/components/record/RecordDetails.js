@@ -1,18 +1,18 @@
 import React,{useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import {getFormattedDate} from "../../helpers/dateHelper";
 import {getRecordByIdApiCall} from "../../apiCalls/recordApiCalls";
 import RecordDetailsData from "./RecordDetailsData";
+import {useTranslation} from "react-i18next";
 
 function RecordDetails() {
     let {recordId} = useParams();
     recordId = parseInt(recordId);
-    //const record = getRecordByIdApiCall(recordId);
     const [recordIdHook, setRecordIdHook] = useState(recordId);
     const [record, setRecord] = useState(null);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(null);
     const [message, setMessage] = useState(null);
+    const { t } = useTranslation();
     let content;
 
     const fetchRecordDetails = () => {
@@ -41,9 +41,9 @@ function RecordDetails() {
     }, []);
 
     if (error) {
-        content = <p>Błąd: {error.message}</p>
+        content = <p>{t("render.error")}{error.message}</p>
     } else if (!isLoaded) {
-        content = <p>Ładowanie danych płyt...</p>;
+        content = <p>{t("render.loading")}</p>;
     } else if (message) {
         content = <p>{message}</p>;
     } else {
@@ -53,9 +53,9 @@ function RecordDetails() {
 
     return (
         <main>
-            <h2>Szczegóły płyty</h2>
+            <h2>{t("record.form.details.pageTitle")}</h2>
             {content}
-            <Link to="/records" className="button-back">Powrót</Link>
+            <Link to="/records" className="button-back">{t("form.actions.edit")}</Link>
         </main>
     );
 }
