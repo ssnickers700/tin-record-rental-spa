@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {getFormattedDate} from "../../helpers/dateHelper";
 import ClientListTableRow from "./ClientListTableRow";
 import ClientDetailsDataTableRow from "./ClientDetailsDataTableRow";
+import FormInput from "../../form/FormInput";
 
 function ClientDetailsData(props) {
     const client = props.clientData
@@ -10,14 +11,29 @@ function ClientDetailsData(props) {
     return (
         <>
             <form className="form">
-                <label htmlFor="firstName">Imię:</label>
-                <input type="text" name="firstName" id="firstName" value={client.firstName} disabled required/>
+                <FormInput
+                    type="text"
+                    label="Imię:"
+                    name="firstName"
+                    value={client.firstName}
+                    disabled
+                />
 
-                <label htmlFor="lastName">Nazwisko:</label>
-                <input type="text" name="lastName" id="lastName" value={client.lastName} disabled required/>
+                <FormInput
+                    type="text"
+                    label="Nazwisko:"
+                    name="lastName"
+                    value={client.lastName}
+                    disabled
+                />
 
-                <label htmlFor="email">Email:</label>
-                <input type="email" name="email" id="email" value={client.email} disabled required/>
+                <FormInput
+                    type="email"
+                    label="Email:"
+                    name="email"
+                    value={client.email}
+                    disabled
+                />
 
                 <label>Czy wypłacalny:</label>
                 <label htmlFor="solvencyTrue">Tak</label>

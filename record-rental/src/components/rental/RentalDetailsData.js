@@ -1,6 +1,7 @@
 import React from "react";
 import {getFormattedDate} from "../../helpers/dateHelper";
 import {Link} from "react-router-dom";
+import FormInput from "../../form/FormInput";
 
 function RentalDetailsData(props) {
     const rental = props.rentalData;
@@ -20,22 +21,37 @@ function RentalDetailsData(props) {
                 </select>
                 <span id="errorRecord" className="errors-text"></span>
 
-                <label htmlFor="startDate">Data od:</label>
-                <input type="date" name="startDate" id="startDate"
-                       value={rental.startDate ? getFormattedDate(rental.startDate) : ""}
-                       required disabled/>
+                <FormInput
+                    type="date"
+                    label="Data od:"
+                    name="startDate"
+                    value={rental.startDate ? getFormattedDate(rental.startDate) : ""}
+                    disabled
+                />
 
-                <label htmlFor="endDate">Data do:</label>
-                <input type="date" name="endDate" id="endDate"
-                       value={rental.endDate ? getFormattedDate(rental.endDate) : ""}
-                       disabled/>
+                <FormInput
+                    type="date"
+                    label="Data do:"
+                    name="endDate"
+                    value={rental.endDate ? getFormattedDate(rental.endDate) : ""}
+                    disabled
+                />
 
-                <label htmlFor="price">Cena za dzień:</label>
-                <input type="number" name="price" min="0.00" id="price" value={rental.record.price} disabled
-                       required/>
+                <FormInput
+                    type="number"
+                    label="Cena za dzień:"
+                    name="price"
+                    value={rental.record.price}
+                    disabled
+                />
 
-                <label htmlFor="email">Email klienta:</label>
-                <input type="email" name="email" id="email" value={rental.client.email} disabled required/>
+                <FormInput
+                    type="email"
+                    label="Email klienta:"
+                    name="email"
+                    value={rental.client.email}
+                    disabled
+                />
 
                 <label>Czy klient wypłacalny:</label>
                 <label htmlFor="solvencyTrue">Tak</label>

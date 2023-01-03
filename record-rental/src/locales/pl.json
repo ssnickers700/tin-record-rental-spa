@@ -39,7 +39,7 @@
       "pageTitle": "Lista klientów"
     },
     "form": {
-      "employment": "Historia wynajmów",
+      "employment": "Historia wynajmów klienta",
       "add": {
         "pageTitle": "Dodawanie klienta",
         "btnLabel": "Dodaj",
@@ -72,7 +72,7 @@
       "pageTitle": "Lista płyt"
     },
     "form": {
-      "employment": "Historia wynajmów",
+      "employment": "Historia wynajmów płyty",
       "add": {
         "pageTitle": "Dodawanie płyty",
         "btnLabel": "Dodaj",

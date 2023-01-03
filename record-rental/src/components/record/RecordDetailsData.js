@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {getFormattedDate} from "../../helpers/dateHelper";
 import RecordDetailsDataTableRow from "./RecordDetailsDataTableRow";
+import FormInput from "../../form/FormInput";
 
 function RecordDetailsData(props) {
     const record = props.recordData
@@ -9,20 +9,37 @@ function RecordDetailsData(props) {
     return (
         <>
             <form className="form">
-                <label htmlFor="recordName">Tytuł:</label>
-                <input type="text" name="recordName" id="recordName" value={record.recordName} className="error-input" disabled
-                       required/>
+                <FormInput
+                    type="text"
+                    label="Tytuł:"
+                    name="recordName"
+                    value={record.recordName}
+                    disabled
+                />
 
-                <label htmlFor="artistName">Artysta:</label>
-                <input type="text" name="artistName" id="artistName" value={record.artistName} className="error-input" disabled
-                       required/>
+                <FormInput
+                    type="text"
+                    label="Artysta:"
+                    name="artistName"
+                    value={record.artistName}
+                    disabled
+                />
 
-                <label htmlFor="price">Cena za dzień:</label>
-                <input type="number" name="price" min="0.00" id="price" value={record.price} className="error-input" disabled
-                       required/>
+                <FormInput
+                    type="text"
+                    label="Cena za dzień:"
+                    name="price"
+                    value={record.price}
+                    disabled
+                />
 
-                <label htmlFor="unit">Ilość dostępnych:</label>
-                <input type="number" name="unit" id="unit" value={record.unit} className="error-input" disabled required/>
+                <FormInput
+                    type="text"
+                    label="Ilość dostępnych:"
+                    name="unit"
+                    value={record.unit}
+                    disabled
+                />
             </form>
             <Link to={`/records/edit/${record._id}`} className="button-edit">Edytuj</Link>
             <h2>Szczegóły wypożyczeń płyty</h2>

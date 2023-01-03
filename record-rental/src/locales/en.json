@@ -39,7 +39,7 @@
       "pageTitle": "List of clients"
     },
     "form": {
-      "employment": "History of rentals",
+      "employment": "History of client's rentals",
       "add": {
         "pageTitle": "Add client form",
         "btnLabel": "Addd",
@@ -72,7 +72,7 @@
       "pageTitle": "List of records"
     },
     "form": {
-      "employment": "History of rentals",
+      "employment": "History of record's rentals",
       "add": {
         "pageTitle": "Add record form",
         "btnLabel": "Add",

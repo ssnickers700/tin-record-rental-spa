@@ -19,6 +19,7 @@ function FormInput(props) {
                 id={props.id}
                 value={props.value}
                 onChange={props.onChange}
+                disabled={props.disabled}
             />
             <span id={errorSpanId} className="errors-text">{props.error}</span>
         </>
