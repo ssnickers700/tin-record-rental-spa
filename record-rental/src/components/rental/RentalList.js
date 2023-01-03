@@ -36,7 +36,7 @@ function RentalList() {
     }, []);
 
     if (error) {
-        content = <p>{t("rendering.error")}{error.message}</p>
+        content = <p>{t("render.error")}{error.message}</p>
     } else if (!isLoaded) {
         content = <p>Ładowanie danych wynajmów...</p>;
     } else if (!rentals.length) {

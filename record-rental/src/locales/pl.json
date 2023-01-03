@@ -90,7 +90,7 @@
         "btnLabel": "Dodaj",
         "confirm": {
           "header": "Potwierdzenie operacji",
-          "text": "Płyta został dodany"
+          "text": "Płyta została dodana"
         }
       },
       "edit": {
@@ -108,7 +108,9 @@
       "client": "Klient",
       "record": "Płyta",
       "startDate": "Data od",
-      "endDate": "Data do"
+      "endDate": "Data do",
+      "clientDefaultOption": "Wybierz klienta",
+      "recordDefaultOption": "Wybierz płytę"
     },
     "list": {
       "title": "Wynajmy",

@@ -13,6 +13,7 @@ import {
 } from "../../helpers/validationCommon";
 import FormInput from "../../form/FormInput";
 import FormButtons from "../../form/FormButtons";
+import {useTranslation} from "react-i18next";
 
 function RecordForm() {
     let {recordId} = useParams();
@@ -26,6 +27,7 @@ function RecordForm() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(null);
     const [message, setMessage] = useState(null);
+    const { t } = useTranslation();
 
     const fetchRecordDetails = () => {
         getRecordByIdApiCall(recordIdHook)
@@ -185,7 +187,7 @@ function RecordForm() {
     if (redirect) {
         const currentFormMode = formModeHook;
         const notice = currentFormMode === formMode.NEW ?
-            "Płyta została dodana" : "Płyta została edytowana"
+            t("record.form.add.confirm.text") : t("record.form.edit.confirm.text")
         return (
             navigate("/records", {
                 state: notice,
@@ -194,8 +196,9 @@ function RecordForm() {
     }
 
     const errorsSummary = hasErrors() ? "Formularz zawiera błędy" : "";
-    const fetchError = error ? `Błąd: ${message}` : "";
-    const pageTitle = formModeHook === formMode.NEW ? "Nowa płyta" : "Edycja płyty";
+    const fetchError = error ? `${t("render.error")} ${message}` : "";
+    const pageTitle = formModeHook === formMode.NEW ?
+        t("record.form.add.pageTitle") : t("record.form.edit.pageTitle");
     const globalErrorMessage = errorsSummary || fetchError || message
 
     return (
@@ -204,7 +207,7 @@ function RecordForm() {
             <form className="form" onSubmit={handleSubmit} noValidate>
                 <FormInput
                     type="text"
-                    label="Tytuł:"
+                    label={t("record.fields.recordName")}
                     required
                     error={errors.recordName}
                     name="recordName"
@@ -214,7 +217,7 @@ function RecordForm() {
 
                 <FormInput
                     type="text"
-                    label="Artysta:"
+                    label={t("record.fields.artistName")}
                     required
                     error={errors.artistName}
                     name="artistName"
@@ -224,7 +227,7 @@ function RecordForm() {
 
                 <FormInput
                     type="text"
-                    label="Cena za dzień:"
+                    label={t("record.fields.price")}
                     required
                     error={errors.price}
                     name="price"
@@ -234,7 +237,7 @@ function RecordForm() {
 
                 <FormInput
                     type="text"
-                    label="Ilość dostępnych:"
+                    label={t("record.fields.unit")}
                     required
                     error={errors.unit}
                     name="unit"

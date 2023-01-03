@@ -11,6 +11,7 @@ import {
 } from "../../helpers/validationCommon";
 import FormInput from "../../form/FormInput";
 import FormButtons from "../../form/FormButtons";
+import {useTranslation} from "react-i18next";
 
 function ClientForm() {
     let {clientId} = useParams();
@@ -24,6 +25,7 @@ function ClientForm() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(null);
     const [message, setMessage] = useState(null);
+    const { t } = useTranslation();
 
     const fetchClientDetails = () => {
         getClientByIdApiCall(clientIdHook)
@@ -177,7 +179,7 @@ function ClientForm() {
     if (redirect) {
         const currentFormMode = formModeHook;
         const notice = currentFormMode === formMode.NEW ?
-            "Pracownik został dodany" : "Pracownik został edytowany"
+            t("client.form.add.confirm.text") : t("client.form.edit.confirm.text")
         return (
             navigate("/clients", {
                 state: notice,
@@ -186,8 +188,9 @@ function ClientForm() {
     }
 
     const errorsSummary = hasErrors() ? "Formularz zawiera błędy" : "";
-    const fetchError = error ? `Błąd: ${message}` : "";
-    const pageTitle = formModeHook === formMode.NEW ? "Nowy klient" : "Edycja klienta";
+    const fetchError = error ? `${t("render.error")} ${message}` : "";
+    const pageTitle = formModeHook === formMode.NEW ?
+        t("client.form.add.pageTitle") : t("client.form.edit.pageTitle");
     const globalErrorMessage = errorsSummary || fetchError || message
 
     return (
@@ -196,7 +199,7 @@ function ClientForm() {
             <form className="form" onSubmit={handleSubmit} noValidate>
                 <FormInput
                     type="text"
-                    label="Imię:"
+                    label={t("client.fields.firstName")}
                     required
                     error={errors.firstName}
                     name="firstName"
@@ -206,7 +209,7 @@ function ClientForm() {
 
                 <FormInput
                     type="text"
-                    label="Nazwisko:"
+                    label={t("client.fields.lastName")}
                     required
                     error={errors.lastName}
                     name="lastName"
@@ -216,7 +219,7 @@ function ClientForm() {
 
                 <FormInput
                     type="email"
-                    label="Email:"
+                    label={t("client.fields.email")}
                     required
                     error={errors.email}
                     name="email"
@@ -224,12 +227,12 @@ function ClientForm() {
                     value={client.email}
                 />
 
-                <label>Czy wypłacalny: <span className="symbol-required">*</span></label>
-                <label htmlFor="solvencyTrue">Tak</label>
+                <label>{t("client.fields.solvency")}<span className="symbol-required">*</span></label>
+                <label htmlFor="solvencyTrue">{t("client.fields.yes")}</label>
                 <input type="radio" id="solvencyTrue" name="solvency" value="true"
                        checked={client.solvency === "true" || client.solvency === true}
                        onChange={handleChange} required/>
-                <label htmlFor="solvencyFalse">Nie</label>
+                <label htmlFor="solvencyFalse">{t("client.fields.no")}</label>
                 <input type="radio" id="solvencyFalse" name="solvency" value="false"
                        checked={client.solvency === "false" || client.solvency === false}
                        onChange={handleChange} required/>

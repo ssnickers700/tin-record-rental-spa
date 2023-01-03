@@ -21,6 +21,7 @@ import {
 import FormInput from "../../form/FormInput";
 import FormButtons from "../../form/FormButtons";
 import {getFormattedDate} from "../../helpers/dateHelper";
+import {useTranslation} from "react-i18next";
 
 function RentalForm() {
     let {rentalId} = useParams();
@@ -36,6 +37,7 @@ function RentalForm() {
     const [message, setMessage] = useState(null);
     const [allClients, setAllClients] = useState([{_id: "", firstName: "", lastName: "", email: "", solvency: ""}]);
     const [allRecords, setAllRecords] = useState([{_id: "", recordName: "", artistName: "", price: "", unit: ""}]);
+    const { t } = useTranslation();
 
     const fetchRentalDetails = () => {
         getRentalByIdApiCall(rentalIdHook)
@@ -225,7 +227,7 @@ function RentalForm() {
     if (redirect) {
         const currentFormMode = formModeHook;
         const notice = currentFormMode === formMode.NEW ?
-            "Wynajem został dodany" : "Wynajem został edytowany"
+            t("rental.form.add.confirm.text") : t("rental.form.edit.confirm.text");
         return (
             navigate("/rentals", {
                 state: notice,
@@ -234,8 +236,9 @@ function RentalForm() {
     }
 
     const errorsSummary = hasErrors() ? "Formularz zawiera błędy" : "";
-    const fetchError = error ? `Błąd: ${message}` : "";
-    const pageTitle = formModeHook === formMode.NEW ? "Nowy wynajem" : "Edycja wynajmu";
+    const fetchError = error ? `${t("render.error")} ${message}` : "";
+    const pageTitle = formModeHook === formMode.NEW ?
+        t("rental.form.add.pageTitle") : t("rental.form.add.pageTitle");
     const globalErrorMessage = errorsSummary || fetchError || message
 
 
@@ -243,9 +246,9 @@ function RentalForm() {
         <main>
             <h2>{pageTitle}</h2>
             <form className="form" onSubmit={handleSubmit} noValidate>
-                <label htmlFor="client">Klient: <span className="symbol-required">*</span></label>
+                <label htmlFor="client">{t("rental.fields.client")}<span className="symbol-required">*</span></label>
                 <select name="client" id="client" onChange={handleChange} required>
-                    <option value="">Wybierz klienta</option>
+                    <option value="">{t("rental.fields.clientDefaultOption")}</option>
                     {allClients.map(client =>
                         (<option key={client._id} value={client._id}
                                  label={client.firstName + " " + client.lastName}
@@ -255,9 +258,9 @@ function RentalForm() {
                 </select>
                 <span id="errorClient" className="errors-text">{errors.client_id}</span>
 
-                <label htmlFor="record">Płyta: <span className="symbol-required">*</span></label>
+                <label htmlFor="record">{t("rental.fields.record")}<span className="symbol-required">*</span></label>
                 <select name="record" id="record" onChange={handleChange} required>
-                    <option value="">Wybierz płytę</option>
+                    <option value="">{t("rental.fields.recordDefaultOption")}</option>
                     {allRecords.map(record =>
                         (<option key={record._id} value={record._id}
                                  label={record.recordName + " - " + record.artistName}
@@ -269,7 +272,7 @@ function RentalForm() {
 
                 <FormInput
                     type="date"
-                    label="Data od:"
+                    label={t("rental.fields.startDate")}
                     required
                     error={errors.startDate}
                     name="startDate"
@@ -279,7 +282,7 @@ function RentalForm() {
 
                 <FormInput
                     type="date"
-                    label="Data do:"
+                    label={t("rental.fields.endDate")}
                     error={errors.endDate}
                     name="endDate"
                     onChange={handleChange}

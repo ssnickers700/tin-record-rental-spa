@@ -72,7 +72,9 @@
       "recordName": "Title",
       "artistName": "Artist",
       "price": "Price per day",
-      "unit": "Number of available"
+      "unit": "Number of available",
+      "clientDefaultOption": "Choose client",
+      "recordDefaultOption": "Choose record"
     },
     "list": {
       "title": "Records",
