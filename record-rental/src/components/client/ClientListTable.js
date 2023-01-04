@@ -1,16 +1,19 @@
 import React from "react";
 import ClientListTableRow from "./ClientListTableRow";
+import {useTranslation} from "react-i18next";
 
 function ClientListTable(props) {
-    const clients = props.clientList
+    const clients = props.clientList;
+    const { t } = useTranslation();
+
     return (
         <table className="table-list">
             <thead>
             <tr>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>E-mail</th>
-                <th>Akcje</th>
+                <th>{t("client.fields.firstName")}</th>
+                <th>{t("client.fields.lastName")}</th>
+                <th>{t("client.fields.email")}</th>
+                <th>{t("list.actions.title")}</th>
             </tr>
             </thead>
             <tbody>

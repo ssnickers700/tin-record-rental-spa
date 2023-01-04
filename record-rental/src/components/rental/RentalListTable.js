@@ -1,17 +1,19 @@
 import React from "react";
 import RentalListTableRow from "./RentalListTableRow";
+import {useTranslation} from "react-i18next";
 
 function RentalListTable(props) {
     const rentals = props.rentalList
+    const { t } = useTranslation();
     return (
         <table className="table-list">
             <thead>
             <tr>
-                <th>Klient</th>
-                <th>Płyta</th>
-                <th>Data od</th>
-                <th>Data do</th>
-                <th>Akcje</th>
+                <th>{t("rental.fields.client")}</th>
+                <th>{t("rental.fields.client")}</th>
+                <th>{t("rental.fields.startDate")}</th>
+                <th>{t("rental.fields.endDate")}</th>
+                <th>{t("list.actions.title")}</th>
             </tr>
             </thead>
             <tbody>

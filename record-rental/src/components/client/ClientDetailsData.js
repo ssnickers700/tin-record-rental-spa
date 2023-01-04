@@ -36,10 +36,10 @@ function ClientDetailsData(props) {
                 />
 
                 <label>{t("client.fields.solvency")}</label>
-                <label htmlFor="solvencyTrue">{t("client.fields.yes")}</label>
+                <label htmlFor="solvencyTrue">{t("yes")}</label>
                 <input type="radio" id="solvencyTrue" name="solvency" value="true"
                        disabled checked={client.solvency === true ? "checked" : ""}/>
-                <label htmlFor="solvencyFalse">{t("client.fields.no")}</label>
+                <label htmlFor="solvencyFalse">{t("no")}</label>
                 <input type="radio" id="solvencyFalse" name="solvency" value="false"
                        disabled checked={client.solvency === true ? "" : "checked"}/>
             </form>

@@ -228,11 +228,11 @@ function ClientForm() {
                 />
 
                 <label>{t("client.fields.solvency")}<span className="symbol-required">*</span></label>
-                <label htmlFor="solvencyTrue">{t("client.fields.yes")}</label>
+                <label htmlFor="solvencyTrue">{t("yes")}</label>
                 <input type="radio" id="solvencyTrue" name="solvency" value="true"
                        checked={client.solvency === "true" || client.solvency === true}
                        onChange={handleChange} required/>
-                <label htmlFor="solvencyFalse">{t("client.fields.no")}</label>
+                <label htmlFor="solvencyFalse">{t("no")}</label>
                 <input type="radio" id="solvencyFalse" name="solvency" value="false"
                        checked={client.solvency === "false" || client.solvency === false}
                        onChange={handleChange} required/>

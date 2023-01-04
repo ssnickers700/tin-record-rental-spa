@@ -29,20 +29,23 @@
     "loading": "Loading...",
     "error": "Error: "
   },
+  "yes": "Yes",
+  "no": "No",
   "client": {
     "fields": {
       "firstName": "First name",
       "lastName": "Last name",
       "email": "Email",
-      "solvency": "Solvable",
-      "yes": "Yes",
-      "no": "No"
+      "solvency": "Solvable"
     },
     "list": {
       "title": "Clients",
       "addNew": "Add new client",
       "noData": "No clients in database",
       "pageTitle": "List of clients"
+    },
+    "popup": {
+      "question": "Are you sure you want to delete client?"
     },
     "form": {
       "details": {
@@ -82,6 +85,9 @@
       "noData": "No records in database",
       "pageTitle": "List of records"
     },
+    "popup": {
+      "question": "Are you sure you want to delete record?"
+    },
     "form": {
       "details": {
         "pageTitle": "Record details",
@@ -117,6 +123,9 @@
       "addNew": "Add new rental",
       "noData": "No rentals in database",
       "pageTitle": "List of rentals"
+    },
+    "popup": {
+      "question": "Are you sure you want to delete rental?"
     },
     "form": {
       "details": {

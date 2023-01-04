@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {deleteRecordApiCall, getRecordsApiCall} from "../../apiCalls/recordApiCalls";
 import RecordListTable from "./RecordListTable";
 import {useTranslation} from "react-i18next";
@@ -13,6 +13,7 @@ function RecordList() {
     const location = useLocation();
     const popupClassName = location.state ? "popup" : "";
     const { t } = useTranslation();
+    const navigate = useNavigate();
     let content;
 
     const fetchRecordList = () => {
@@ -33,9 +34,9 @@ function RecordList() {
     if (error) {
         content = <p>{t("render.error")}{error.message}</p>
     } else if (!isLoaded) {
-        content = <p>Ładowanie danych płyt...</p>;
+        content = <p>{t("render.loading")}</p>;
     } else if (!records.length) {
-        content = <p>Brak danych płyt</p>;
+        content = <p>{t("record.list.noData")}</p>;
     } else {
         content = <RecordListTable
             recordList={records}
@@ -46,27 +47,32 @@ function RecordList() {
     }
 
     useEffect(() => {
-        fetchRecordList()
+        fetchRecordList();
     }, []);
+
+    useEffect(() => {
+        fetchRecordList();
+    }, [confirmPopup]);
 
     return (
         <>
             {confirmPopup &&
                 <div id="confirm-popup-delete">
-                    <p>Czy na pewno chcesz usunąć płytę?</p>
-                    <Link onClick={
-                        deleteRecordApiCall(deleteRecordId)
-                    } className="confirm-popup-yes-button">Tak</Link>
+                    <p>{t("record.popup.question")}</p>
+                    <Link onClick={() => {
+                        deleteRecordApiCall(deleteRecordId);
+                        toggleConfirmPopup(!confirmPopup);
+                    }} className="confirm-popup-yes-button">{t("yes")}</Link>
                     <Link onClick={() =>
                         toggleConfirmPopup(!confirmPopup)
-                    } className="confirm-popup-cancel-button">Anuluj</Link>
+                    } className="confirm-popup-cancel-button">{t("form.actions.cancel")}</Link>
                 </div>
             }
             <div className={popupClassName}>{location.state}</div>
             <main>
-                <h2>Lista płyt</h2>
+                <h2>{t("record.list.title")}</h2>
                 {content}
-                <Link to="/records/add" className="button-add">Dodaj nową płytę</Link>
+                <Link to="/records/add" className="button-add">{t("record.list.addNew")}</Link>
             </main>
         </>
     )

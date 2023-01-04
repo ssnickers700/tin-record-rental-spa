@@ -29,20 +29,23 @@
     "loading": "Ładowanie...",
     "error": "Błąd: "
   },
+  "yes": "Tak",
+  "no": "Nie",
   "client": {
     "fields": {
       "firstName": "Imię",
       "lastName": "Nazwisko",
       "email": "Email",
-      "solvency": "Czy wypłacalny",
-      "yes": "Tak",
-      "no": "Nie"
+      "solvency": "Czy wypłacalny"
     },
     "list": {
       "title": "Klienci",
       "addNew": "Dodaj nowego klienta",
       "noData": "Brak klientów w bazie",
       "pageTitle": "Lista klientów"
+    },
+    "popup": {
+      "question": "Czy na pewno chcesz usunąć klienta?"
     },
     "form": {
       "details": {
@@ -79,6 +82,9 @@
       "addNew": "Dodaj nową płytę",
       "noData": "Brak płyt w bazie",
       "pageTitle": "Lista płyt"
+    },
+    "popup": {
+      "question": "Czy na pewno chcesz usunąć płytę?"
     },
     "form": {
       "details": {
@@ -117,6 +123,9 @@
       "addNew": "Dodaj nowy wynajem",
       "noData": "Brak wynajmów w bazie",
       "pageTitle": "Lista wynajmów"
+    },
+    "popup": {
+      "question": "Czy na pewno chcesz usunąć wynajem?"
     },
     "form": {
       "details": {

@@ -31,15 +31,19 @@ function ClientList(props) {
     }
 
     useEffect(() => {
-        fetchClientList()
+        fetchClientList();
     }, []);
+
+    useEffect(() => {
+        fetchClientList();
+    }, [confirmPopup]);
 
     if (error) {
         content = <p>{t("render.error")}{error.message}</p>
     } else if (!isLoaded) {
-        content = <p>Ładowanie danych klientów...</p>;
+        content = <p>{t("render.loading")}</p>;
     } else if (!clients.length) {
-        content = <p>Brak danych klientów</p>;
+        content = <p>{t("client.list.noData")}</p>;
     } else {
         content = <ClientListTable
             clientList={clients}
@@ -53,20 +57,21 @@ function ClientList(props) {
         <>
             {confirmPopup &&
                 <div id="confirm-popup-delete">
-                    <p>Czy na pewno chcesz usunąć klienta?</p>
-                    <Link onClick={
-                        deleteClientApiCall(deleteClientId)
-                    } className="confirm-popup-yes-button">Tak</Link>
+                    <p>{t("client.popup.question")}</p>
+                    <Link onClick={() => {
+                        deleteClientApiCall(deleteClientId);
+                        toggleConfirmPopup(!confirmPopup);
+                    }} className="confirm-popup-yes-button">{t("yes")}</Link>
                     <Link onClick={() =>
                         toggleConfirmPopup(!confirmPopup)
-                    } className="confirm-popup-cancel-button">Anuluj</Link>
+                    } className="confirm-popup-cancel-button">{t("form.actions.cancel")}</Link>
                 </div>
             }
             <div className={popupClassName}>{location.state}</div>
             <main>
-                <h2>Lista klientów</h2>
+                <h2>{t("client.list.title")}</h2>
                 {content}
-                <Link to="/clients/add" className="button-add">Dodaj nowego klienta</Link>
+                <Link to="/clients/add" className="button-add">{t("client.list.addNew")}</Link>
             </main>
         </>
     );

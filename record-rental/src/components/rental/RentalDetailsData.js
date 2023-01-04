@@ -11,13 +11,13 @@ function RentalDetailsData(props) {
     return (
         <>
             <form className="form">
-                <label htmlFor="client">{t("rental.fields.client")}<span className="symbol-required">*</span></label>
+                <label htmlFor="client">{t("rental.fields.client")}</label>
                 <select name="client" id="client" required disabled>
                     <option label={rental.client.firstName + " " + rental.client.lastName} />
                 </select>
                 <span id="errorClient" className="errors-text"></span>
 
-                <label htmlFor="record">{t("rental.fields.record")}<span className="symbol-required">*</span></label>
+                <label htmlFor="record">{t("rental.fields.record")}</label>
                 <select name="record" id="record" required disabled>
                     <option label={rental.record.recordName + " - " + rental.record.artistName} />
                 </select>
@@ -56,10 +56,10 @@ function RentalDetailsData(props) {
                 />
 
                 <label>{t("rental.form.details.solvency")}</label>
-                <label htmlFor="solvencyTrue">{t("client.fields.yes")}</label>
+                <label htmlFor="solvencyTrue">{t("yes")}</label>
                 <input type="radio" id="solvencyTrue" name="solvency" value="true"
                        disabled checked={rental.client.solvency === true ? "checked" : ""}/>
-                <label htmlFor="solvencyFalse">{t("client.fields.no")}</label>
+                <label htmlFor="solvencyFalse">{t("no")}</label>
                 <input type="radio" id="solvencyFalse" name="solvency" value="false"
                        disabled checked={rental.client.solvency === true ? "" : "checked"}/>
             </form>

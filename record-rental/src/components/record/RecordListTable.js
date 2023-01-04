@@ -1,17 +1,19 @@
 import React from "react";
 import RecordListTableRow from "./RecordListTableRow";
+import {useTranslation} from "react-i18next";
 
 function RecordListTable(props) {
-    const records = props.recordList
+    const records = props.recordList;
+    const { t } = useTranslation();
     return (
         <table className="table-list">
             <thead>
             <tr>
-                <th>Tytuł</th>
-                <th>Artysta</th>
-                <th>Cena za dzień</th>
-                <th>Ilość dostępnych</th>
-                <th>Akcje</th>
+                <th>{t("record.fields.recordName")}</th>
+                <th>{t("record.fields.artistName")}</th>
+                <th>{t("record.fields.price")}</th>
+                <th>{t("record.fields.unit")}</th>
+                <th>{t("list.actions.title")}</th>
             </tr>
             </thead>
             <tbody>

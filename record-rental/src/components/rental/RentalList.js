@@ -35,12 +35,16 @@ function RentalList() {
         fetchRentalList();
     }, []);
 
+    useEffect(() => {
+        fetchRentalList();
+    }, [confirmPopup]);
+
     if (error) {
         content = <p>{t("render.error")}{error.message}</p>
     } else if (!isLoaded) {
-        content = <p>Ładowanie danych wynajmów...</p>;
+        content = <p>{t("render.loading")}</p>;
     } else if (!rentals.length) {
-        content = <p>Brak danych wynajów</p>;
+        content = <p>{t("rental.list.noData")}</p>;
     } else {
         content = <RentalListTable
             rentalList={rentals}
@@ -54,20 +58,21 @@ function RentalList() {
         <>
             {confirmPopup &&
                 <div id="confirm-popup-delete">
-                    <p>Czy na pewno chcesz usunąć wynajem?</p>
-                    <Link onClick={
-                        deleteRentalApiCall(deleteRentalId)
-                    } className="confirm-popup-yes-button">Tak</Link>
+                    <p>{t("rental.popup.question")}</p>
+                    <Link onClick={() => {
+                        deleteRentalApiCall(deleteRentalId);
+                        toggleConfirmPopup(!confirmPopup);
+                    }} className="confirm-popup-yes-button">{t("yes")}</Link>
                     <Link onClick={() =>
                         toggleConfirmPopup(!confirmPopup)
-                    } className="confirm-popup-cancel-button">Anuluj</Link>
+                    } className="confirm-popup-cancel-button">{t("form.actions.cancel")}</Link>
                 </div>
             }
             <div className={popupClassName}>{location.state}</div>
             <main>
-                <h2>Lista wynajmów</h2>
+                <h2>{t("rental.list.title")}</h2>
                 {content}
-                <Link to="/rentals/add" className="button-add">Dodaj nowy wynajem</Link>
+                <Link to="/rentals/add" className="button-add">{t("rental.list.addNew")}</Link>
             </main>
         </>
     )
