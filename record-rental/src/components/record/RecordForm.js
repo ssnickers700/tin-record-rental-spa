@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import formMode from "../../helpers/formHelper";
+import formMode, {formValidationKeys, getValidationErrorKey} from "../../helpers/formHelper";
 import {addRecordApiCall, getRecordByIdApiCall, updateRecordApiCall} from "../../apiCalls/recordApiCalls";
 import {
     checkInteger,
@@ -76,34 +76,34 @@ function RecordForm() {
             if (!checkRequired(fieldValue)) {
                 errorMessage = errorRequiredText;
             } else if (!checkTextLengthRange(fieldValue, 1, 60)) {
-                errorMessage = getErrorLengthText(1, 60);
+                errorMessage = formValidationKeys.len_1_60;
             }
         }
         if (fieldName === "artistName") {
             if (!checkRequired(fieldValue)) {
                 errorMessage = errorRequiredText;
             } else if (!checkTextLengthRange(fieldValue, 1, 60)) {
-                errorMessage = getErrorLengthText(1, 60);
+                errorMessage = formValidationKeys.len_1_60;
             }
         }
         if (fieldName === "price") {
             if (!checkRequired(fieldValue)) {
                 errorMessage = errorRequiredText;
             } else if (!checkNumber(fieldValue)) {
-                errorMessage = "Wartość powinna być liczbą";
+                errorMessage = formValidationKeys.notNumber;
             } else if (!checkNumberRange(fieldValue, 0, 1_000_000)) {
-                errorMessage = "Podaj wartość od 0 do 1,000,000";
+                errorMessage = formValidationKeys.numberRange;
             }
         }
         if (fieldName === "unit") {
             if (!checkRequired(fieldValue)) {
                 errorMessage = errorRequiredText;
             } else if (!checkNumber(fieldValue)) {
-                errorMessage = "Wartość powinna być liczbą";
+                errorMessage = formValidationKeys.notNumber;
             } else if (!checkNumberRange(fieldValue, 0, 1_000_000)) {
-                errorMessage = "Podaj wartość od 0 do 1,000,000";
+                errorMessage = formValidationKeys.numberRange;
             } else if (!checkInteger(fieldValue)) {
-                errorMessage = "Wartość powinna być liczbą całkowitą";
+                errorMessage = formValidationKeys.notInteger;
             }
         }
         return errorMessage;
@@ -195,7 +195,7 @@ function RecordForm() {
         )
     }
 
-    const errorsSummary = hasErrors() ? "Formularz zawiera błędy" : "";
+    const errorsSummary = hasErrors() ? t(getValidationErrorKey("formErrors")) : "";
     const fetchError = error ? `${t("render.error")} ${message}` : "";
     const pageTitle = formModeHook === formMode.NEW ?
         t("record.form.add.pageTitle") : t("record.form.edit.pageTitle");

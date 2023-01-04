@@ -7,7 +7,7 @@ import {
     updateClientApiCall
 } from "../../apiCalls/clientApiCalls";
 import {getRecordsApiCall} from "../../apiCalls/recordApiCalls";
-import formMode from "../../helpers/formHelper";
+import formMode, {formValidationKeys, getValidationErrorKey} from "../../helpers/formHelper";
 import {useState, useEffect} from "react";
 import {addRentalApiCall, getRentalByIdApiCall, updateRentalApiCall} from "../../apiCalls/rentalApiCalls";
 import {
@@ -135,14 +135,14 @@ function RentalForm() {
             } else if (!checkDate(fieldValue)) {
                 errorMessage = errorDateFormat;
             } else if (checkDateIfAfter(fieldValue, getNowDate())) {
-                errorMessage = "Data nie może być przyszła";
+                errorMessage = formValidationKeys.futureDate;
             }
         }
         if (fieldName === "endDate" && checkRequired(fieldValue)) {
             if (!checkDate(fieldValue)) {
                 errorMessage = errorDateFormat;
             } else if (checkDateIfAfter(rental.startDate, fieldValue)) {
-                errorMessage = "Data do nie może być wcześniejsza niż Data od";
+                errorMessage = formValidationKeys.earlyDate;
             }
         }
         return errorMessage;
@@ -235,10 +235,10 @@ function RentalForm() {
         )
     }
 
-    const errorsSummary = hasErrors() ? "Formularz zawiera błędy" : "";
+    const errorsSummary = hasErrors() ? t(getValidationErrorKey("formErrors")) : "";
     const fetchError = error ? `${t("render.error")} ${message}` : "";
     const pageTitle = formModeHook === formMode.NEW ?
-        t("rental.form.add.pageTitle") : t("rental.form.add.pageTitle");
+        t("rental.form.add.pageTitle") : t("rental.form.edit.pageTitle");
     const globalErrorMessage = errorsSummary || fetchError || message
 
 
@@ -256,7 +256,7 @@ function RentalForm() {
                         </option>)
                     )}
                 </select>
-                <span id="errorClient" className="errors-text">{errors.client_id}</span>
+                <span id="errorClient" className="errors-text">{t(getValidationErrorKey(errors.client_id))}</span>
 
                 <label htmlFor="record">{t("rental.fields.record")}<span className="symbol-required">*</span></label>
                 <select name="record" id="record" onChange={handleChange} required>
@@ -268,7 +268,7 @@ function RentalForm() {
                         </option>)
                     )}
                 </select>
-                <span id="errorRecord" className="errors-text">{errors.record_id}</span>
+                <span id="errorRecord" className="errors-text">{t(getValidationErrorKey(errors.record_id))}</span>
 
                 <FormInput
                     type="date"

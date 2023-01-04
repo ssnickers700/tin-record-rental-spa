@@ -151,5 +151,20 @@
         }
       }
     }
+  },
+  "validation": {
+    "notEmpty": "Pole jest wymagane",
+    "len_2_60": "Pole powinno zawierać od 2 do 60 znaków",
+    "len_1_60": "Pole powinno zawierać od 1 do 60 znaków",
+    "len_5_60": "Pole powinno zawierać od 5 do 60 znaków",
+    "notEmail": "Pole powinno zawierać prawidłowy adres email",
+    "formErrors": "Formularz zawiera błędy",
+    "dateFormat": "Data powinna być w formacie yyyy-mm-dd",
+    "futureDate": "Data nie może być przyszła",
+    "earlyDate": "Data do nie może być wcześniejsza niż Data od",
+    "notNumber": "Wartość powinna być liczbą",
+    "notInteger": "Wartość powinna być liczbą całkowitą",
+    "numberRange": "Podaj wartość od 0 do 1,000,000",
+    "email must be unique": "Email musi być unikalny"
   }
 }

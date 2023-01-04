@@ -151,5 +151,20 @@
         }
       }
     }
+  },
+  "validation": {
+    "notEmpty": "The field is required",
+    "len_2_60": "The field should contain 2 - 60 characters",
+    "len_1_60": "The field should contain 1 - 60 characters",
+    "len_5_60": "The field should contain 5 - 60 characters",
+    "notEmail": "The field should contain a valid email",
+    "formErrors": "The from contains error",
+    "dateFormat": "The date shoud be in format yyyy-mm-dd",
+    "futureDate": "The date cannot be future",
+    "earlyDate": "End date cannot be before Start date",
+    "notNumber": "The value should be a number",
+    "notInteger": "The value should be an integer",
+    "numberRange": "Enter a value between 0 and 1,000,000",
+    "email must be unique": "Email must be unique"
   }
 }

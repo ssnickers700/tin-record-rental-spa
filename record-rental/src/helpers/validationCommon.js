@@ -1,7 +1,7 @@
-export const errorRequiredText = "Pole jest wymagane";
-export const errorsSummaryText = "Formularz zawiera błedy";
-export const errorDateFormat = "Data powinna być w formacie yyyy-mm-dd";
-export const errorInputClassName = "error-input";
+import {formValidationKeys} from "./formHelper";
+
+export const errorRequiredText = formValidationKeys.notEmpty;
+export const errorDateFormat = formValidationKeys.dateFormat;
 export const datePattern = /(\d{4})-(\d{2})-(\d{2})/;
 
 export function getErrorLengthText(min, max) {

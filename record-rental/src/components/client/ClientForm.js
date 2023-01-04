@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import formMode from "../../helpers/formHelper";
+import formMode, {formValidationKeys, getValidationErrorKey} from "../../helpers/formHelper";
 import {addClientApiCall, getClientByIdApiCall, updateClientApiCall} from "../../apiCalls/clientApiCalls";
 import {
     checkEmail,
@@ -74,23 +74,23 @@ function ClientForm() {
             if (!checkRequired(fieldValue)) {
                errorMessage = errorRequiredText;
             } else if (!checkTextLengthRange(fieldValue, 2, 60)) {
-                errorMessage = getErrorLengthText(2, 60);
+                errorMessage = formValidationKeys.len_2_60;
             }
         }
         if (fieldName === "lastName") {
             if (!checkRequired(fieldValue)) {
                 errorMessage = errorRequiredText;
             } else if (!checkTextLengthRange(fieldValue, 2, 60)) {
-                errorMessage = getErrorLengthText(2, 60);
+                errorMessage = formValidationKeys.len_2_60;
             }
         }
         if (fieldName === "email") {
             if (!checkRequired(fieldValue)) {
                 errorMessage = errorRequiredText;
             } else if (!checkTextLengthRange(fieldValue, 5, 60)) {
-                errorMessage = getErrorLengthText(5, 60);
+                errorMessage = formValidationKeys.len_5_60;
             } else if (!checkEmail(fieldValue)) {
-                errorMessage = "Pole powinno zawierać prawidłowy adres email";
+                errorMessage = formValidationKeys.notEmail;
             }
         }
         if (fieldName === "solvency") {
@@ -187,7 +187,7 @@ function ClientForm() {
         )
     }
 
-    const errorsSummary = hasErrors() ? "Formularz zawiera błędy" : "";
+    const errorsSummary = hasErrors() ? t(getValidationErrorKey("formErrors")) : "";
     const fetchError = error ? `${t("render.error")} ${message}` : "";
     const pageTitle = formModeHook === formMode.NEW ?
         t("client.form.add.pageTitle") : t("client.form.edit.pageTitle");
@@ -236,7 +236,7 @@ function ClientForm() {
                 <input type="radio" id="solvencyFalse" name="solvency" value="false"
                        checked={client.solvency === "false" || client.solvency === false}
                        onChange={handleChange} required/>
-                <span id="errorSolvency" className="errors-text">{errors.solvency}</span>
+                <span id="errorSolvency" className="errors-text">{t(getValidationErrorKey(errors.solvency))}</span>
 
                 <FormButtons
                     formMode={formModeHook}
