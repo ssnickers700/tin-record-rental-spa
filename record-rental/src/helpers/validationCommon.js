@@ -9,7 +9,7 @@ export function getErrorLengthText(min, max) {
 }
 
 export function checkRequired(value) {
-    if (!value) {
+    if (!value && value !== false) {
         return false;
     }
     value = value.toString().trim();
