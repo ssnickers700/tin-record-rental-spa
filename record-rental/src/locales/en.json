@@ -45,7 +45,8 @@
       "pageTitle": "List of clients"
     },
     "popup": {
-      "question": "Are you sure you want to delete client?"
+      "question": "Are you sure you want to delete client?",
+      "confirmText": "Client has been deleted"
     },
     "form": {
       "details": {
@@ -75,9 +76,7 @@
       "recordName": "Title",
       "artistName": "Artist",
       "price": "Price per day",
-      "unit": "Number of available",
-      "clientDefaultOption": "Choose client",
-      "recordDefaultOption": "Choose record"
+      "unit": "Number of available"
     },
     "list": {
       "title": "Records",
@@ -86,7 +85,8 @@
       "pageTitle": "List of records"
     },
     "popup": {
-      "question": "Are you sure you want to delete record?"
+      "question": "Are you sure you want to delete record?",
+      "confirmText": "Record has been deleted"
     },
     "form": {
       "details": {
@@ -106,7 +106,7 @@
         "btnLabel": "Edit",
         "confirm": {
           "header": "Confirmation",
-          "text": "Record has been added"
+          "text": "Record has been edited"
         }
       }
     }
@@ -116,7 +116,9 @@
       "client": "Client",
       "record": "Record",
       "startDate": "Start date",
-      "endDate": "End date"
+      "endDate": "End date",
+      "clientDefaultOption": "Choose client",
+      "recordDefaultOption": "Choose record"
     },
     "list": {
       "title": "Rentals",
@@ -125,7 +127,8 @@
       "pageTitle": "List of rentals"
     },
     "popup": {
-      "question": "Are you sure you want to delete rental?"
+      "question": "Are you sure you want to delete rental?",
+      "confirmText": "Rental has been deleted"
     },
     "form": {
       "details": {
@@ -147,7 +150,7 @@
         "btnLabel": "Edit",
         "confirm": {
           "header": "Confirmation",
-          "text": "Rental has been added"
+          "text": "Rental has been edited"
         }
       }
     }
@@ -158,7 +161,7 @@
     "len_1_60": "The field should contain 1 - 60 characters",
     "len_5_60": "The field should contain 5 - 60 characters",
     "notEmail": "The field should contain a valid email",
-    "formErrors": "The from contains error",
+    "formErrors": "The from contains errors",
     "dateFormat": "The date shoud be in format yyyy-mm-dd",
     "futureDate": "The date cannot be future",
     "earlyDate": "End date cannot be before Start date",

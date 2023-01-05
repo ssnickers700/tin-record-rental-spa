@@ -16,7 +16,7 @@ i18n
     .use(initReactI18next)
     .init({
         resources,
-        lng: "pl",
+        lng: localStorage.getItem("lang") || "pl",
         interpolation: {
             escapeValue: false
         }

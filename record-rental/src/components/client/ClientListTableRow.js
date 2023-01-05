@@ -17,6 +17,8 @@ function ClientListTableRow(props) {
                     <li><Link onClick={() => {
                         props.toggleConfirmPopup(!props.confirmPopup)
                         props.setDeleteClientId(client._id);
+                        props.toggleDeletePopup(false);
+                        props.setDeletePopupText(null);
                     }} className="list-actions-button-delete">{t("list.actions.delete")}</Link>
                     </li>
                 </ul>

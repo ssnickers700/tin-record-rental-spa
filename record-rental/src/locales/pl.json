@@ -45,7 +45,8 @@
       "pageTitle": "Lista klientów"
     },
     "popup": {
-      "question": "Czy na pewno chcesz usunąć klienta?"
+      "question": "Czy na pewno chcesz usunąć klienta?",
+      "confirmText": "Klient został usunięty"
     },
     "form": {
       "details": {
@@ -84,7 +85,8 @@
       "pageTitle": "Lista płyt"
     },
     "popup": {
-      "question": "Czy na pewno chcesz usunąć płytę?"
+      "question": "Czy na pewno chcesz usunąć płytę?",
+      "confirmText": "Płyta została usunięta"
     },
     "form": {
       "details": {
@@ -125,7 +127,8 @@
       "pageTitle": "Lista wynajmów"
     },
     "popup": {
-      "question": "Czy na pewno chcesz usunąć wynajem?"
+      "question": "Czy na pewno chcesz usunąć wynajem?",
+      "confirmText": "Wynajem został usunięty"
     },
     "form": {
       "details": {

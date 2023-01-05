@@ -23,7 +23,10 @@ function RentalListTable(props) {
                     key={rental._id}
                     toggleConfirmPopup={props.toggleConfirmPopup}
                     confirmPopup={props.confirmPopup}
-                    setDeleteRentalId={props.setDeleteRentalId}/>
+                    setDeleteRentalId={props.setDeleteRentalId}
+                    toggleDeletePopup={props.toggleDeletePopup}
+                    setDeletePopupText={props.setDeletePopupText}
+                />
             )}
             </tbody>
         </table>

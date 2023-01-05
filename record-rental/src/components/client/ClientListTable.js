@@ -24,6 +24,8 @@ function ClientListTable(props) {
                     toggleConfirmPopup={props.toggleConfirmPopup}
                     confirmPopup={props.confirmPopup}
                     setDeleteClientId={props.setDeleteClientId}
+                    toggleDeletePopup={props.toggleDeletePopup}
+                    setDeletePopupText={props.setDeletePopupText}
                 />
             )}
             </tbody>

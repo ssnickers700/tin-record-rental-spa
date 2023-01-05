@@ -10,8 +10,10 @@ function RecordList() {
     const [records, setRecords] = useState([])
     const [confirmPopup, toggleConfirmPopup] = useState(false);
     const [deleteRecordId, setDeleteRecordId] = useState(null);
+    const [deletePopup, toggleDeletePopup] = useState(false);
+    const [deletePopupText, setDeletePopupText] = useState(null);
     const location = useLocation();
-    const popupClassName = location.state ? "popup" : "";
+    const popupClassName = location.state || deletePopup ? "popup" : "";
     const { t } = useTranslation();
     const navigate = useNavigate();
     let content;
@@ -43,6 +45,8 @@ function RecordList() {
             toggleConfirmPopup={toggleConfirmPopup}
             confirmPopup={confirmPopup}
             setDeleteRecordId={setDeleteRecordId}
+            toggleDeletePopup={toggleDeletePopup}
+            setDeletePopupText={setDeletePopupText}
         />
     }
 
@@ -62,13 +66,15 @@ function RecordList() {
                     <Link onClick={() => {
                         deleteRecordApiCall(deleteRecordId);
                         toggleConfirmPopup(!confirmPopup);
+                        toggleDeletePopup(true);
+                        setDeletePopupText(t("record.popup.confirmText"))
                     }} className="confirm-popup-yes-button">{t("yes")}</Link>
                     <Link onClick={() =>
                         toggleConfirmPopup(!confirmPopup)
                     } className="confirm-popup-cancel-button">{t("form.actions.cancel")}</Link>
                 </div>
             }
-            <div className={popupClassName}>{location.state}</div>
+            <div className={popupClassName}>{location.state || deletePopupText}</div>
             <main>
                 <h2>{t("record.list.title")}</h2>
                 {content}

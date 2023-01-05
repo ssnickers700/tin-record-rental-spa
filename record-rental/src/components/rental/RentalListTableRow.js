@@ -19,6 +19,8 @@ function RentalListTableRow(props) {
                     <li><Link onClick={() => {
                         props.toggleConfirmPopup(!props.confirmPopup)
                         props.setDeleteRentalId(rental._id);
+                        props.toggleDeletePopup(false);
+                        props.setDeletePopupText(null);
                     }} className="list-actions-button-delete">{t("list.actions.delete")}</Link>
                     </li>
                 </ul>

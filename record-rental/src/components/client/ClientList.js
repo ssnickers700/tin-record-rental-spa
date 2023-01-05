@@ -10,8 +10,10 @@ function ClientList(props) {
     const [clients, setClients] = useState([]);
     const [confirmPopup, toggleConfirmPopup] = useState(false);
     const [deleteClientId, setDeleteClientId] = useState(null);
+    const [deletePopup, toggleDeletePopup] = useState(false);
+    const [deletePopupText, setDeletePopupText] = useState(null);
     const location = useLocation();
-    const popupClassName = location.state ? "popup" : "";
+    const popupClassName = location.state || deletePopup ? "popup" : "";
     const { t } = useTranslation();
     let content;
 
@@ -50,6 +52,8 @@ function ClientList(props) {
             toggleConfirmPopup={toggleConfirmPopup}
             confirmPopup={confirmPopup}
             setDeleteClientId={setDeleteClientId}
+            toggleDeletePopup={toggleDeletePopup}
+            setDeletePopupText={setDeletePopupText}
         />
     }
 
@@ -61,13 +65,15 @@ function ClientList(props) {
                     <Link onClick={() => {
                         deleteClientApiCall(deleteClientId);
                         toggleConfirmPopup(!confirmPopup);
+                        toggleDeletePopup(true);
+                        setDeletePopupText(t("client.popup.confirmText"))
                     }} className="confirm-popup-yes-button">{t("yes")}</Link>
                     <Link onClick={() =>
                         toggleConfirmPopup(!confirmPopup)
                     } className="confirm-popup-cancel-button">{t("form.actions.cancel")}</Link>
                 </div>
             }
-            <div className={popupClassName}>{location.state}</div>
+            <div className={popupClassName}>{location.state || deletePopupText}</div>
             <main>
                 <h2>{t("client.list.title")}</h2>
                 {content}

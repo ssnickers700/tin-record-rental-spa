@@ -35,13 +35,15 @@ nav {
 nav ul {
     padding: 0;
     overflow: hidden;
+    display: flex;
 }
 
-nav ul li {
+/*nav ul li {
     float: left;
-}
+}*/
 
-nav ul li a {
+nav ul li a,
+nav ul li button {
     display: inline-block;
     padding: 1rem 2rem;
     color: #000000;
@@ -52,9 +54,21 @@ nav ul li a.active {
     color: #ecf0f1;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li button:hover {
     background-color: #8963fd;
     color: #ecf0f1;
+    cursor: pointer;
+}
+
+nav ul li.lang {
+    margin-left: auto;
+}
+
+nav ul li button {
+    background-color: transparent;
+    text-decoration: none;
+    border: 0;
 }
 
 main {

@@ -11,8 +11,10 @@ function RentalList() {
     const [rentals, setRentals] = useState([]);
     const [confirmPopup, toggleConfirmPopup] = useState(false);
     const [deleteRentalId, setDeleteRentalId] = useState(null);
+    const [deletePopup, toggleDeletePopup] = useState(false);
+    const [deletePopupText, setDeletePopupText] = useState(null);
     const location = useLocation();
-    const popupClassName = location.state ? "popup" : "";
+    const popupClassName = location.state || deletePopup ? "popup" : "";
     const { t } = useTranslation();
     let content;
 
@@ -51,6 +53,8 @@ function RentalList() {
             toggleConfirmPopup={toggleConfirmPopup}
             confirmPopup={confirmPopup}
             setDeleteRentalId={setDeleteRentalId}
+            toggleDeletePopup={toggleDeletePopup}
+            setDeletePopupText={setDeletePopupText}
         />
     }
 
@@ -62,13 +66,15 @@ function RentalList() {
                     <Link onClick={() => {
                         deleteRentalApiCall(deleteRentalId);
                         toggleConfirmPopup(!confirmPopup);
+                        toggleDeletePopup(true);
+                        setDeletePopupText(t("rental.popup.confirmText"))
                     }} className="confirm-popup-yes-button">{t("yes")}</Link>
                     <Link onClick={() =>
                         toggleConfirmPopup(!confirmPopup)
                     } className="confirm-popup-cancel-button">{t("form.actions.cancel")}</Link>
                 </div>
             }
-            <div className={popupClassName}>{location.state}</div>
+            <div className={popupClassName}>{location.state || deletePopupText}</div>
             <main>
                 <h2>{t("rental.list.title")}</h2>
                 {content}

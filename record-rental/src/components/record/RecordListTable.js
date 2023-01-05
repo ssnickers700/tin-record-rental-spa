@@ -24,6 +24,8 @@ function RecordListTable(props) {
                     toggleConfirmPopup={props.toggleConfirmPopup}
                     confirmPopup={props.confirmPopup}
                     setDeleteRecordId={props.setDeleteRecordId}
+                    toggleDeletePopup={props.toggleDeletePopup}
+                    setDeletePopupText={props.setDeletePopupText}
                 />
             )}
             </tbody>
