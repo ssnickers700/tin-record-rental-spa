@@ -55,7 +55,9 @@ function RentalDetails() {
         <main>
             <h2>{t("rental.form.details.pageTitle")}</h2>
             {content}
-            <Link to="/rentals" className="button-back">{t("form.actions.return")}</Link>
+            <Link to="/rentals" className="button-back no-table-button-back">
+                {t("form.actions.return")}
+            </Link>
         </main>
     );
 }
