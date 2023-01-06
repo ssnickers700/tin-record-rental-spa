@@ -140,8 +140,8 @@ main h2 {
 }
 
 .list-actions-button-edit,
-.list-actions-button-details {
-    margin-right: 1rem;
+.list-actions-button-delete {
+    margin-left: 1rem;
 }
 
 .list-actions-button-details,

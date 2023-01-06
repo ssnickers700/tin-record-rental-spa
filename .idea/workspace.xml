@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76895aa8-52da-4835-afb8-61d423f43c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/record-rental/src/apiCalls/authApiCalls.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/record-rental/src/components/other/LoginForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/record-rental/src/helpers/authHelper.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/record-rental/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/components/fragments/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/fragments/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/form/FormButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/form/FormButtons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/helpers/formHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/helpers/formHelper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/record-rental/src/locales/pl.json" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/locales/pl.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/client/ClientDetailsData.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/client/ClientDetailsData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/client/ClientList.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/client/ClientList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/client/ClientListTableRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/client/ClientListTableRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/record/RecordDetailsData.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/record/RecordDetailsData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/record/RecordList.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/record/RecordList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/record/RecordListTableRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/record/RecordListTableRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/rental/RentalDetailsData.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/rental/RentalDetailsData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/rental/RentalList.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/rental/RentalList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record-rental/src/components/rental/RentalListTableRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/record-rental/src/components/rental/RentalListTableRow.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
       <option name="presentableId" value="Default" />
       <updated>1671569891228</updated>
       <workItem from="1671569892747" duration="849000" />
-      <workItem from="1671570758037" duration="212294000" />
+      <workItem from="1671570758037" duration="213976000" />
     </task>
     <servers />
   </component>

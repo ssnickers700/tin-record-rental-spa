@@ -4,6 +4,7 @@ import {deleteRentalApiCall, getRentalsApiCall} from "../../apiCalls/rentalApiCa
 import {useEffect, useState} from "react";
 import RentalListTable from "./RentalListTable";
 import {useTranslation} from "react-i18next";
+import {isAuthenticated} from "../../helpers/authHelper";
 
 function RentalList() {
     const [error, setError] = useState(null);
@@ -78,7 +79,7 @@ function RentalList() {
             <main>
                 <h2>{t("rental.list.title")}</h2>
                 {content}
-                <Link to="/rentals/add" className="button-add">{t("rental.list.addNew")}</Link>
+                {isAuthenticated() && <Link to="/rentals/add" className="button-add">{t("rental.list.addNew")}</Link>}
             </main>
         </>
     )

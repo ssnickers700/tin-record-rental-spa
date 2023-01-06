@@ -3,6 +3,7 @@ import {Link, useLocation} from "react-router-dom";
 import {deleteClientApiCall, getClientsApiCall} from "../../apiCalls/clientApiCalls";
 import ClientListTable from "./ClientListTable";
 import {useTranslation} from "react-i18next";
+import {isAuthenticated} from "../../helpers/authHelper";
 
 function ClientList(props) {
     const [error, setError] = useState(null);
@@ -77,7 +78,7 @@ function ClientList(props) {
             <main>
                 <h2>{t("client.list.title")}</h2>
                 {content}
-                <Link to="/clients/add" className="button-add">{t("client.list.addNew")}</Link>
+                {isAuthenticated() && <Link to="/clients/add" className="button-add">{t("client.list.addNew")}</Link>}
             </main>
         </>
     );

@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import ClientDetailsDataTableRow from "./ClientDetailsDataTableRow";
 import FormInput from "../../form/FormInput";
 import {useTranslation} from "react-i18next";
+import {isAuthenticated} from "../../helpers/authHelper";
 
 function ClientDetailsData(props) {
     const client = props.clientData
@@ -43,7 +44,7 @@ function ClientDetailsData(props) {
                 <input type="radio" id="solvencyFalse" name="solvency" value="false"
                        disabled checked={client.solvency === true ? "" : "checked"}/>
             </form>
-            <Link to={`/clients/edit/${client._id}`} className="button-edit">{t("form.actions.edit")}</Link>
+            {isAuthenticated() && <Link to={`/clients/edit/${client._id}`} className="button-edit">{t("form.actions.edit")}</Link>}
             <h2>{t("client.form.details.employment")}</h2>
             <table className="table-list">
                 <thead>

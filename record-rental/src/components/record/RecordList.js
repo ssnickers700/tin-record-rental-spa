@@ -3,6 +3,7 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import {deleteRecordApiCall, getRecordsApiCall} from "../../apiCalls/recordApiCalls";
 import RecordListTable from "./RecordListTable";
 import {useTranslation} from "react-i18next";
+import {isAuthenticated} from "../../helpers/authHelper";
 
 function RecordList() {
     const [error, setError] = useState(null);
@@ -78,7 +79,7 @@ function RecordList() {
             <main>
                 <h2>{t("record.list.title")}</h2>
                 {content}
-                <Link to="/records/add" className="button-add">{t("record.list.addNew")}</Link>
+                {isAuthenticated() && <Link to="/records/add" className="button-add">{t("record.list.addNew")}</Link>}
             </main>
         </>
     )

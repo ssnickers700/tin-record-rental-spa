@@ -3,6 +3,7 @@ import {getFormattedDate} from "../../helpers/dateHelper";
 import {Link} from "react-router-dom";
 import FormInput from "../../form/FormInput";
 import {useTranslation} from "react-i18next";
+import {isAuthenticated} from "../../helpers/authHelper";
 
 function RentalDetailsData(props) {
     const rental = props.rentalData;
@@ -63,7 +64,7 @@ function RentalDetailsData(props) {
                 <input type="radio" id="solvencyFalse" name="solvency" value="false"
                        disabled checked={rental.client.solvency === true ? "" : "checked"}/>
             </form>
-            <Link to={`/rentals/edit/${rental._id}`} className="button-edit">{t("form.actions.edit")}</Link>
+            {isAuthenticated() && <Link to={`/rentals/edit/${rental._id}`} className="button-edit">{t("form.actions.edit")}</Link>}
         </>
     );
 }

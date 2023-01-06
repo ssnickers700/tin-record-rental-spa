@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import RecordDetailsDataTableRow from "./RecordDetailsDataTableRow";
 import FormInput from "../../form/FormInput";
 import {useTranslation} from "react-i18next";
+import {isAuthenticated} from "../../helpers/authHelper";
 
 function RecordDetailsData(props) {
     const record = props.recordData
@@ -43,7 +44,7 @@ function RecordDetailsData(props) {
                     disabled
                 />
             </form>
-            <Link to={`/records/edit/${record._id}`} className="button-edit">{t("form.actions.edit")}</Link>
+            {isAuthenticated() && <Link to={`/records/edit/${record._id}`} className="button-edit">{t("form.actions.edit")}</Link>}
             <h2>{t("record.form.details.employment")}</h2>
             <table className="table-list">
                 <thead>
