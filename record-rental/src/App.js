@@ -20,6 +20,7 @@ import RentalForm from "./components/rental/RentalForm";
 import formMode from "./helpers/formHelper";
 import LoginForm from "./components/other/LoginForm";
 import {getCurrentUser} from "./helpers/authHelper";
+import ProtectedRoute from "./components/other/ProtectedRoute";
 
 function App() {
     const [user, setUser] = useState(undefined);
@@ -46,24 +47,36 @@ function App() {
                 <Header/>
                 <Navigation handleLogout={handleLogout}/>
                 <Routes>
-                    <Route path="/" element={<MainContent />} />
+                    <Route path="/" element={<MainContent/>}/>
 
-                    <Route path="/login" element={<LoginForm handleLogin={handleLogin} />}/>
+                    <Route path="/login" element={<LoginForm handleLogin={handleLogin}/>}/>
 
-                    <Route path="/clients" element={<ClientList />} />
-                    <Route path="/clients/details/:clientId" element={<ClientDetails />} />
-                    <Route path="/clients/add" element={<ClientForm />} />
-                    <Route path="/clients/edit/:clientId" element={<ClientForm />} />
+                    <Route path="/clients" element={<ClientList/>}/>
+                    <Route path="/clients/details/:clientId" element={<ClientDetails/>}/>
+                    <Route path="/clients/add" element={<ProtectedRoute/>}>
+                        <Route path="/clients/add" element={<ClientForm/>}/>
+                    </Route>
+                    <Route path="/clients/edit/:clientId" element={<ProtectedRoute/>}>
+                        <Route path="/clients/edit/:clientId" element={<ClientForm/>}/>
+                    </Route>
 
-                    <Route path="/records" element={<RecordList />} />
-                    <Route path="/records/details/:recordId" element={<RecordDetails />} />
-                    <Route path="/records/add/" element={<RecordForm />} />
-                    <Route path="/records/edit/:recordId" element={<RecordForm />} />
+                    <Route path="/records" element={<RecordList/>}/>
+                    <Route path="/records/details/:recordId" element={<RecordDetails/>}/>
+                    <Route path="/records/add/" element={<ProtectedRoute/>}>
+                        <Route path="/records/add/" element={<RecordForm/>}/>
+                    </Route>
+                    <Route path="/records/edit/:recordId" element={<ProtectedRoute/>}>
+                        <Route path="/records/edit/:recordId" element={<RecordForm/>}/>
+                    </Route>
 
-                    <Route path="/rentals" element={<RentalList />} />
-                    <Route path="/rentals/details/:rentalId" element={<RentalDetails />} />
-                    <Route path="/rentals/add" element={<RentalForm />} />
-                    <Route path="/rentals/edit/:rentalId" element={<RentalForm />} />
+                    <Route path="/rentals" element={<RentalList/>}/>
+                    <Route path="/rentals/details/:rentalId" element={<RentalDetails/>}/>
+                    <Route path="/rentals/add" element={<ProtectedRoute/>}>
+                        <Route path="/rentals/add" element={<RentalForm/>}/>
+                    </Route>
+                    <Route path="/rentals/edit/:rentalId" element={<ProtectedRoute/>}>
+                        <Route path="/rentals/edit/:rentalId" element={<RentalForm/>}/>
+                    </Route>
                 </Routes>
                 <Footer/>
             </div>

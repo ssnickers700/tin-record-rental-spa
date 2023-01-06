@@ -219,6 +219,11 @@ main h2 {
     margin-right: 0.5rem;
 }
 
+/*.button-back {
+    display: inline-block;
+    margin-top: 2rem;
+}*/
+
 .list-empty-text {
     margin-bottom: 2rem;
 }
