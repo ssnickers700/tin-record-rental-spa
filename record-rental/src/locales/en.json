@@ -22,7 +22,8 @@
       "return": "Return",
       "edit": "Edit",
       "cancel": "Cancel",
-      "add": "Add"
+      "add": "Add",
+      "login": "Log in"
     }
   },
   "render": {
@@ -36,7 +37,8 @@
       "firstName": "First name",
       "lastName": "Last name",
       "email": "Email",
-      "solvency": "Solvable"
+      "solvency": "Solvable",
+      "password": "Password"
     },
     "list": {
       "title": "Clients",
@@ -168,6 +170,11 @@
     "notNumber": "The value should be a number",
     "notInteger": "The value should be an integer",
     "numberRange": "Enter a value between 0 and 1,000,000",
-    "email must be unique": "Email must be unique"
+    "email must be unique": "Email must be unique",
+    "notAuth": "Invalid email or password"
+  },
+  "auth": {
+    "pageTitle": "Log in",
+    "logout": "Log out"
   }
 }

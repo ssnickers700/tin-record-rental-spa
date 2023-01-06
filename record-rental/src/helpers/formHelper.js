@@ -1,6 +1,7 @@
 const formMode = {
     NEW: "NEW",
-    EDIT: "EDIT"
+    EDIT: "EDIT",
+    LOGIN: "LOGIN"
 }
 
 export const formValidationKeys = {

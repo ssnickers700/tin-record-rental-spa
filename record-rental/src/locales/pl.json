@@ -22,7 +22,8 @@
       "return": "Powrót",
       "edit": "Edytuj",
       "cancel": "Anuluj",
-      "add": "Dodaj"
+      "add": "Dodaj",
+      "login": "Zaloguj się"
     }
   },
   "render": {
@@ -36,7 +37,8 @@
       "firstName": "Imię",
       "lastName": "Nazwisko",
       "email": "Email",
-      "solvency": "Czy wypłacalny"
+      "solvency": "Czy wypłacalny",
+      "password": "Hasło"
     },
     "list": {
       "title": "Klienci",
@@ -168,6 +170,11 @@
     "notNumber": "Wartość powinna być liczbą",
     "notInteger": "Wartość powinna być liczbą całkowitą",
     "numberRange": "Podaj wartość od 0 do 1,000,000",
-    "email must be unique": "Email musi być unikalny"
+    "email must be unique": "Email musi być unikalny",
+    "notAuth": "Nieprawidłowy adres email lub hasło"
+  },
+  "auth": {
+    "pageTitle": "Logowanie",
+    "logout": "Wyloguj się"
   }
 }

@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from "react"
 import Header from "./components/fragments/Header";
 import Navigation from "./components/fragments/Navigation";
 import MainContent from "./components/other/MainContent";
@@ -16,15 +17,38 @@ import RecordForm from "./components/record/RecordForm";
 import RentalList from "./components/rental/RentalList";
 import RentalDetails from "./components/rental/RentalDetails";
 import RentalForm from "./components/rental/RentalForm";
+import formMode from "./helpers/formHelper";
+import LoginForm from "./components/other/LoginForm";
+import {getCurrentUser} from "./helpers/authHelper";
 
 function App() {
+    const [user, setUser] = useState(undefined);
+    const [prevPath, setPrevPath] = useState("");
+
+    const handleLogin = (user) => {
+        localStorage.setItem("user", user);
+        setUser(user);
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        setUser(undefined);
+    }
+
+    useEffect(() => {
+        const currentUser = getCurrentUser();
+        setUser(currentUser);
+    }, []);
+
     return (
         <Router>
             <div>
                 <Header/>
-                <Navigation/>
+                <Navigation handleLogout={handleLogout}/>
                 <Routes>
                     <Route path="/" element={<MainContent />} />
+
+                    <Route path="/login" element={<LoginForm handleLogin={handleLogin} />}/>
 
                     <Route path="/clients" element={<ClientList />} />
                     <Route path="/clients/details/:clientId" element={<ClientDetails />} />

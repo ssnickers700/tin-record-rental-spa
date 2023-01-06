@@ -5,9 +5,11 @@ import {useTranslation} from "react-i18next";
 
 function FormButtons(props) {
     const { t } = useTranslation();
-    const submitButtonLabel = props.formMode === formMode.NEW ? t("form.actions.add") : t("form.actions.edit");
-    const submitButtonClassName = props.formMode === formMode.NEW ?
-        "form-button-submit-add" : "form-button-submit-edit";
+    const submitButtonLabel = props.formMode === formMode.NEW ?
+        t("form.actions.add") : props.formMode === formMode.LOGIN ?
+            t("form.actions.login") : t("form.actions.edit");
+    const submitButtonClassName = props.formMode === formMode.EDIT ?
+        "form-button-submit-edit" : "form-button-submit-add";
 
     return (
         <div className="form-buttons">
