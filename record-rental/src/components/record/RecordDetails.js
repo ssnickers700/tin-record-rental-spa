@@ -55,7 +55,7 @@ function RecordDetails() {
         <main>
             <h2>{t("record.form.details.pageTitle")}</h2>
             {content}
-            <Link to="/records" className="button-back">{t("form.actions.edit")}</Link>
+            <Link to="/records" className="button-back">{t("form.actions.return")}</Link>
         </main>
     );
 }
