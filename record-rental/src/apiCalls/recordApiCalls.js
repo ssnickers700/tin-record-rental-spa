@@ -1,4 +1,5 @@
 import {recordDetailsList, recordList} from "./recordApiMockData";
+import {getCurrentUser, getCurrentUserToken} from "../helpers/authHelper";
 const recordsBaseUrl = "http://localhost:3000/api/records"
 
 
@@ -15,10 +16,12 @@ export function getRecordByIdApiCall(recordId) {
 
 export function addRecordApiCall(record) {
     const recordString = JSON.stringify(record);
+    const token = getCurrentUserToken();
     const options = {
         method: "POST",
         headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + token
         },
         body: recordString
     };
@@ -28,10 +31,12 @@ export function addRecordApiCall(record) {
 
 export function updateRecordApiCall(recordId, record) {
     const recordString = JSON.stringify(record);
+    const token = getCurrentUserToken();
     const options = {
         method: "PUT",
         headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + token
         },
         body: recordString
     };
@@ -40,10 +45,12 @@ export function updateRecordApiCall(recordId, record) {
 }
 
 export function deleteRecordApiCall(recordId) {
+    const token = getCurrentUserToken();
     const options = {
         method: "DELETE",
         headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + token
         },
     };
     const promise = fetch(`${recordsBaseUrl}/${recordId}`, options);

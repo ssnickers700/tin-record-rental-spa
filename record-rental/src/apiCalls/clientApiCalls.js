@@ -1,4 +1,5 @@
 import {clientDetailsList, clientList} from "./clientApiMockData";
+import {getCurrentUser, getCurrentUserToken} from "../helpers/authHelper";
 const clientsBaseUrl = "http://localhost:3000/api/clients"
 
 export function getClientsApiCall() {
@@ -14,10 +15,12 @@ export function getClientByIdApiCall(clientId) {
 
 export function addClientApiCall(client) {
     const clientString = JSON.stringify(client);
+    const token = getCurrentUserToken();
     const options = {
         method: "POST",
         headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + token
         },
         body: clientString
     };
@@ -27,10 +30,12 @@ export function addClientApiCall(client) {
 
 export function updateClientApiCall(clientId, client) {
     const clientString = JSON.stringify(client);
+    const token = getCurrentUserToken();
     const options = {
         method: "PUT",
         headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + token
         },
         body: clientString
     };
@@ -39,10 +44,12 @@ export function updateClientApiCall(clientId, client) {
 }
 
 export function deleteClientApiCall(clientId) {
+    const token = getCurrentUserToken();
     const options = {
         method: "DELETE",
         headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + token
         },
     };
     const promise = fetch(`${clientsBaseUrl}/${clientId}`, options);

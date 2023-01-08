@@ -15,7 +15,7 @@ function FormButtons(props) {
         <div className="form-buttons">
             <p id="errorsSummary" className="errors-text">{props.error}</p>
             <input type="submit" value={submitButtonLabel} className={submitButtonClassName}/>
-            <Link to={props.cancelPath} className="form-button-cancel">{t("form.actions.cancel")}</Link>
+            <Link to={props.cancelPath} onClick={props.cancelAction} className="form-button-cancel">{t("form.actions.cancel")}</Link>
         </div>
     );
 }

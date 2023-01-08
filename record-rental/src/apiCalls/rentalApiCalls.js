@@ -1,4 +1,5 @@
 import {rentalDetailsList, rentalList} from "./rentalApiMockData";
+import {getCurrentUserToken} from "../helpers/authHelper";
 const rentalsBaseUrl = "http://localhost:3000/api/rentals"
 
 export function getRentalsApiCall() {
@@ -14,10 +15,12 @@ export function getRentalByIdApiCall(rentalId) {
 
 export function addRentalApiCall(rental) {
     const rentalString = JSON.stringify(rental);
+    const token = getCurrentUserToken();
     const options = {
         method: "POST",
         headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + token
         },
         body: rentalString
     };
@@ -27,10 +30,12 @@ export function addRentalApiCall(rental) {
 
 export function updateRentalApiCall(rentalId, rental) {
     const rentalString = JSON.stringify(rental);
+    const token = getCurrentUserToken();
     const options = {
         method: "PUT",
         headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + token
         },
         body: rentalString
     };
@@ -39,10 +44,12 @@ export function updateRentalApiCall(rentalId, rental) {
 }
 
 export function deleteRentalApiCall(rentalId) {
+    const token = getCurrentUserToken();
     const options = {
         method: "DELETE",
         headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + token
         },
     };
     const promise = fetch(`${rentalsBaseUrl}/${rentalId}`, options);

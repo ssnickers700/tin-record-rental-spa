@@ -63,8 +63,9 @@ function ClientList(props) {
             {confirmPopup &&
                 <div id="confirm-popup-delete">
                     <p>{t("client.popup.question")}</p>
-                    <Link onClick={() => {
+                    <Link onClick={async () => {
                         deleteClientApiCall(deleteClientId);
+                        await new Promise(r => setTimeout(r, 200));
                         toggleConfirmPopup(!confirmPopup);
                         toggleDeletePopup(true);
                         setDeletePopupText(t("client.popup.confirmText"))

@@ -64,8 +64,9 @@ function RecordList() {
             {confirmPopup &&
                 <div id="confirm-popup-delete">
                     <p>{t("record.popup.question")}</p>
-                    <Link onClick={() => {
+                    <Link onClick={async () => {
                         deleteRecordApiCall(deleteRecordId);
+                        await new Promise(r => setTimeout(r, 200));
                         toggleConfirmPopup(!confirmPopup);
                         toggleDeletePopup(true);
                         setDeletePopupText(t("record.popup.confirmText"))

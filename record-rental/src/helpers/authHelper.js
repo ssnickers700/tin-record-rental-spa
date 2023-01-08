@@ -9,3 +9,12 @@ export function isAuthenticated() {
     }
     return false;
 }
+
+export function getCurrentUserToken() {
+    const user = getCurrentUser();
+    let token;
+    if (user && user.token) {
+        token = user.token;
+    }
+    return token;
+}

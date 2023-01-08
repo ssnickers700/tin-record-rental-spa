@@ -127,9 +127,9 @@ function LoginForm(props) {
                     />
 
                     <FormButtons
-                        cancelPath={prevPath}
                         error={globalErrorMessage}
                         formMode={formMode.LOGIN}
+                        cancelAction={() => navigate(-1)}
                     />
                 </form>
             </div>

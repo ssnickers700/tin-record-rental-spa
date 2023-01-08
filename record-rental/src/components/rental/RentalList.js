@@ -64,8 +64,9 @@ function RentalList() {
             {confirmPopup &&
                 <div id="confirm-popup-delete">
                     <p>{t("rental.popup.question")}</p>
-                    <Link onClick={() => {
+                    <Link onClick={async () => {
                         deleteRentalApiCall(deleteRentalId);
+                        await new Promise(r => setTimeout(r, 200));
                         toggleConfirmPopup(!confirmPopup);
                         toggleDeletePopup(true);
                         setDeletePopupText(t("rental.popup.confirmText"))
