@@ -18,8 +18,8 @@ function ClientForm() {
     clientId = parseInt(clientId);
     let currentFormMode = clientId ? formMode.EDIT : formMode.NEW;
     const [clientIdHook, setClientIdHook] = useState(clientId);
-    const [client, setClient] = useState({firstName: "", lastName: "", email: "", solvency: ""});
-    const [errors, setErrors] = useState({firstName: "", lastName: "", email: "", solvency: ""});
+    const [client, setClient] = useState({firstName: "", lastName: "", email: "", password: "", solvency: ""});
+    const [errors, setErrors] = useState({firstName: "", lastName: "", email: "", password: "", solvency: ""});
     const [formModeHook, setFormModeHook] = useState(currentFormMode);
     const [redirect, setRedirect] = useState(false);
     const [error, setError] = useState(null);
@@ -98,6 +98,11 @@ function ClientForm() {
                 errorMessage = errorRequiredText;
             }
         }
+        if (fieldName === "password") {
+            if (!checkRequired(fieldValue)) {
+                errorMessage = errorRequiredText;
+            }
+        }
         return errorMessage;
     }
 
@@ -131,7 +136,7 @@ function ClientForm() {
                         (data) => {
                             if (!response.ok && response.status === 500) {
                                 console.log(data)
-                                const errorsResponse = {firstName: "", lastName: "", email: "", solvency: ""}
+                                const errorsResponse = {firstName: "", lastName: "", email: "", password: "", solvency: ""}
                                 for (let i = data.error.errors.length - 1; i >=0; i--) {
                                     const errorItem = data.error.errors[i]
                                     const errorMessage = errorItem.message
@@ -225,6 +230,16 @@ function ClientForm() {
                     name="email"
                     onChange={handleChange}
                     value={client.email}
+                />
+
+                <FormInput
+                    type="password"
+                    label={t("client.fields.password")}
+                    required
+                    error={errors.password}
+                    name="password"
+                    onChange={handleChange}
+                    value={client.password}
                 />
 
                 <label>{t("client.fields.solvency")}<span className="symbol-required">*</span></label>
